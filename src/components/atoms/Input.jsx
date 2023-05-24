@@ -10,7 +10,7 @@ const Input = ({ style, label, type, name, id, ...props }) => {
         type={type}
         name={name}
         id={id}
-        className={`bg-transparent border-[2px] rounded-xl border-primary p-3 ${style}`}
+        className={`bg-transparent border-[2px] rounded-xl border-primary p-2 md:p-3 ${style}`}
         {...props}
       />
     </div>
