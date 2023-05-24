@@ -1,22 +1,26 @@
 import React, { useRef } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import Button from "@mui/material/Button";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const UserNavbar = () => {
   const [nav, setNav] = React.useState(false);
   const navMenu = [
     {
-      menuList: "Home",
+      menuList: "Beranda",
       menuLink: "/",
     },
     {
-      menuList: "News",
-      menuLink: "/news",
+      menuList: "Artikel",
+      menuLink: "/artikel",
     },
     {
-      menuList: "Medichine Info",
+      menuList: "Informasi Obat",
       menuLink: "/info",
+    },
+    {
+      menuList: "Apotek",
+      menuLink: "/cari",
     },
   ];
 
@@ -33,30 +37,36 @@ const UserNavbar = () => {
     <nav className="fixed w-full">
       {nav ? (
         <div
-          className="flex flex-col items-center justify-center w-full min-h-screen bg-black/50 lg:hidden"
+          className={`flex flex-col items-center justify-center w-full min-h-screen bg-black/50 lg:hidden`}
           onClick={handleNav}
         >
           <div className="flex flex-col gap-4" ref={navRef}>
-            <div className="flex gap-4">
-              <span className="flex flex-col items-center justify-center w-24 h-24 transition-all duration-300 border rounded-xl hover:bg-violet-700 hover:text-white hover:scale-125">
-                Home
-              </span>
-              <span className="flex flex-col items-center justify-center w-24 h-24 transition-all duration-300 border rounded-xl hover:bg-violet-700 hover:text-white hover:scale-125">
-                News
-              </span>
-            </div>
-            <div className="flex gap-4">
-              <span className="flex flex-col items-center justify-center w-24 h-24 text-center transition-all duration-300 border texc rounded-xl hover:bg-violet-700 hover:text-white hover:scale-125">
-                Medichine Info
-              </span>
-              <span className="flex flex-col items-center justify-center w-24 h-24 transition-all duration-300 border rounded-xl hover:bg-violet-700 hover:text-white hover:scale-125">
-                Login
-              </span>
+            <div className="flex flex-col gap-4">
+              {navMenu.map((item, index) => {
+                return (
+                  <NavLink
+                    onClick={() => {
+                      setNav(!nav);
+                    }}
+                    key={index}
+                    className={({ isActive }) =>
+                      isActive
+                        ? "flex flex-col items-center text-center justify-center w-24 h-24 transition-all duration-300 border rounded-xl hover:bg-primary bg-primary text-white hover:scale-125"
+                        : "flex flex-col items-center text-center justify-center w-24 h-24 transition-all duration-300 border rounded-xl hover:bg-primary text-white hover:scale-125"
+                    }
+                    to={item.menuLink}
+                    spy={true}
+                    smooth={true}
+                  >
+                    {item.menuList}
+                  </NavLink>
+                );
+              })}
             </div>
           </div>
         </div>
       ) : null}
-      <div className="flex items-center justify-between w-full max-w-6xl px-4 mx-auto h-[92px] lg:hidden">
+      <div className="flex items-center justify-between w-full max-w-screen-xl px-4 mx-auto h-[92px] lg:hidden">
         <h1 className="text-2xl font-bold">Meddy</h1>
         {!nav && (
           <MenuIcon
@@ -66,23 +76,29 @@ const UserNavbar = () => {
         )}
       </div>
       <div className="flex">
-        <div className="hidden lg:flex items-center justify-between w-full max-w-6xl px-4 mx-auto h-[92px]">
-          <h1 className="text-2xl font-bold">Meddy Versi Dekstop</h1>
+        <div className="hidden lg:flex items-center justify-between w-full max-w-screen-xl px-4 mx-auto h-[92px]">
+          <img src="./logo.png" alt="logo" className="w-16 h-16 " />
           <div className="flex gap-8">
             <div className="flex gap-8">
               {navMenu.map((item, index) => {
                 return (
-                  <Link
-                    className="text-xl cursor-pointer font-extralight hover:text-blue-600"
-                    to={item.menuLink}
+                  <NavLink
                     key={index}
+                    className={({ isActive }) =>
+                      isActive
+                        ? "text-xl cursor-pointer font-extralight hover:text-primary hover:border-b hover:border-black text-primary hover:font-bold"
+                        : "text-xl cursor-pointer font-extralight hover:text-primary  hover:border-b hover:border-black"
+                    }
+                    to={item.menuLink}
+                    spy={true}
+                    smooth={true}
                   >
                     {item.menuList}
-                  </Link>
+                  </NavLink>
                 );
               })}
             </div>
-            <Button
+            {/* <Button
               style={{
                 borderRadius: 35,
               }}
@@ -92,7 +108,7 @@ const UserNavbar = () => {
               variant="contained"
             >
               Login
-            </Button>
+            </Button> */}
           </div>
         </div>
       </div>
