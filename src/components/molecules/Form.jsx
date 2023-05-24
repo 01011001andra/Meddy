@@ -1,8 +1,9 @@
 import React from "react";
 import { Button, Input } from "../atoms";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Form = () => {
+  const navigate = useNavigate();
   return (
     <form className="flex flex-col w-full gap-3" autoComplete="off">
       <Input label="Email" type="email" id="email" name="email" />
@@ -12,6 +13,9 @@ const Form = () => {
           type="button"
           style="bg-primary hover:bg-primary/60 text-white"
           content="Login"
+          onClick={() => {
+            navigate("/");
+          }}
         />
         <div className="flex items-center justify-between">
           <span className="flex-1 h-1">
