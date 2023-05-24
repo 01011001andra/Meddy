@@ -34,7 +34,7 @@ const Form = () => {
         />
 
         <Link className="flex justify-center w-full gap-2">
-          Dont have an account?{" "}
+          Don't have an account?{" "}
           <span className="text-primary hover:underline">Sign in</span>
         </Link>
       </div>
