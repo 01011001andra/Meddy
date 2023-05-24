@@ -1,11 +1,11 @@
 import React from "react";
 
-const UserHome = () => {
+const UserArtikel = () => {
   return (
     <div className="min-h-screen pt-24">
-      <h1>Home</h1>
+      <h1>Artikel</h1>
     </div>
   );
 };
 
-export default UserHome;
+export default UserArtikel;

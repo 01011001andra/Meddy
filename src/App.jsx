@@ -1,6 +1,12 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { Home, MainLayout } from "./pages";
+import {
+  UserHome,
+  MainLayout,
+  UserArtikel,
+  UserCariApotek,
+  UserObat,
+} from "./pages";
 import Login from "./pages/user/Login";
 
 const App = () => {
@@ -11,9 +17,10 @@ const App = () => {
     <div className="relative">
       <Routes>
         <Route path="/" element={<MainLayout />}>
-          <Route index element={<Home />} />
-          <Route path="/news" element={<h1>News</h1>} />
-          <Route path="/info" element={<h1>Medichine Info</h1>} />
+          <Route index element={<UserHome />} />
+          <Route path="/artikel" element={<UserArtikel />} />
+          <Route path="/info" element={<UserObat />} />
+          <Route path="/cari" element={<UserCariApotek />} />
           <Route path="/login" element={<Login />} />
         </Route>
         <Route path="*" element={<h1>Not Found</h1>} />
