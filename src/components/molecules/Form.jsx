@@ -28,14 +28,14 @@ const Form = () => {
           content={
             <>
               <img src="./loginGoogle.png" alt="google" />
-              Login with Google
+              Masuk dengan google
             </>
           }
         />
 
         <Link className="flex justify-center w-full gap-2">
-          Don't have an account?{" "}
-          <span className="text-primary hover:underline">Sign in</span>
+          Ingin menjadi mitra apoteker?{" "}
+          <span className="text-primary hover:underline">Daftar</span>
         </Link>
       </div>
     </form>
