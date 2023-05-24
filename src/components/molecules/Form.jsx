@@ -10,7 +10,7 @@ const Form = () => {
       <div className="flex flex-col w-full gap-2">
         <Button
           type="button"
-          style="bg-primary hover:bg-primary/60 "
+          style="bg-primary hover:bg-primary/60 text-white"
           content="Login"
         />
         <div className="flex items-center justify-between">
