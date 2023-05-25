@@ -5,6 +5,8 @@ import { Link, NavLink } from "react-router-dom";
 
 const UserNavbar = () => {
   const [nav, setNav] = React.useState(false);
+  const [bgNav, setBgNav] = React.useState(false);
+
   const navMenu = [
     {
       menuList: "Beranda",
@@ -32,6 +34,18 @@ const UserNavbar = () => {
     }
     setNav(!nav);
   };
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY >= 100) {
+      setBgNav(true);
+    } else {
+      setBgNav(false);
+    }
+  });
+
+  React.useEffect(() => {
+    console.log(bgNav);
+  }, [bgNav]);
 
   return (
     <nav className="fixed w-full">
@@ -66,18 +80,25 @@ const UserNavbar = () => {
           </div>
         </div>
       ) : null}
-      <div className="flex items-center justify-between w-full max-w-screen-xl px-4 mx-auto h-[92px] lg:hidden">
-        <h1 className="text-2xl font-bold">Meddy</h1>
-        {!nav && (
+      {!nav && (
+        <div
+          className={`flex items-center justify-between w-full max-w-screen-xl px-4 mx-auto h-[92px] ${
+            bgNav && "bg-primary"
+          } lg:hidden transition-all duration-700`}
+        >
+          <h1 className="text-2xl font-bold">Meddy</h1>
           <MenuIcon
             style={{ fontSize: "50px", cursor: "pointer" }}
             onClick={handleNav}
           />
-        )}
-      </div>
-      <div className="flex">
+        </div>
+      )}
+
+      <div
+        className={`flex ${bgNav && "bg-primary"} transition-all duration-700`}
+      >
         <div className="hidden lg:flex items-center justify-between w-full max-w-screen-xl px-4 mx-auto h-[92px]">
-          <img src="./logo.png" alt="logo" className="w-16 h-16 " />
+          <img src="./logo.png" alt="logo" className="w-48 bg-primary" />
           <div className="flex gap-8">
             <div className="flex gap-8">
               {navMenu.map((item, index) => {
