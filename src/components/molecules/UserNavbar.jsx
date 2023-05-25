@@ -43,15 +43,11 @@ const UserNavbar = () => {
     }
   });
 
-  React.useEffect(() => {
-    console.log(bgNav);
-  }, [bgNav]);
-
   return (
-    <nav className="fixed w-full">
+    <nav className="fixed w-full text-white">
       {nav ? (
         <div
-          className={`flex flex-col items-center justify-center w-full min-h-screen bg-black/50 lg:hidden`}
+          className={`flex flex-col items-center justify-center w-full min-h-screen  bg-black/50 lg:hidden`}
           onClick={handleNav}
         >
           <div className="flex flex-col gap-4" ref={navRef}>
@@ -82,9 +78,7 @@ const UserNavbar = () => {
       ) : null}
       {!nav && (
         <div
-          className={`flex items-center justify-between w-full max-w-screen-xl px-4 mx-auto h-[92px] ${
-            bgNav && "bg-primary"
-          } lg:hidden transition-all duration-700`}
+          className={`flex items-center justify-between w-full max-w-screen-xl px-4 mx-auto h-[92px] lg:hidden transition-all duration-700 bg-[url('./loginBackground.png')]`}
         >
           <h1 className="text-2xl font-bold">Meddy</h1>
           <MenuIcon
@@ -95,10 +89,10 @@ const UserNavbar = () => {
       )}
 
       <div
-        className={`flex ${bgNav && "bg-primary"} transition-all duration-700`}
+        className={`flex transition-all duration-700 bg-[url('./loginBackground.png')]`}
       >
-        <div className="hidden lg:flex items-center justify-between w-full max-w-screen-xl px-4 mx-auto h-[92px]">
-          <img src="./logo.png" alt="logo" className="w-48 bg-primary" />
+        <div className="hidden lg:flex items-center justify-between  w-full max-w-screen-xl px-4 mx-auto h-[92px]">
+          <img src="./logo.png" alt="logo" className="w-44" />
           <div className="flex gap-8">
             <div className="flex gap-8">
               {navMenu.map((item, index) => {
@@ -107,7 +101,7 @@ const UserNavbar = () => {
                     key={index}
                     className={({ isActive }) =>
                       isActive
-                        ? "text-xl cursor-pointer font-extralight hover:text-primary hover:border-b hover:border-black text-primary hover:font-bold"
+                        ? `text-xl cursor-pointer hover:text-primary hover:border-b hover:border-black font-bold text-slate-500 hover:font-bold`
                         : "text-xl cursor-pointer font-extralight hover:text-primary  hover:border-b hover:border-black"
                     }
                     to={item.menuLink}
