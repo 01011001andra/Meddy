@@ -1,16 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const UserFooter = () => {
   return (
     <footer className="text-white bg-gradient-to-r bg-primary">
-      <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
+      <div className="max-w-screen-xl px-4 py-16 mx-auto">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-          <div>
-            <img src="./logo.png" alt="logo" />
-            <p className="max-w-xs mt-4 text-sm ">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas,
-              accusantium.
-            </p>
+          <div className="flex flex-col justify-between">
+            <img src="./logo.png" alt="logo" className="w-52" />
+            <Link to="/login" className="max-w-xs mt-4 text-sm">
+              Login Admin
+            </Link>
             <div className="flex mt-8 space-x-6 ">
               <a className="hover:opacity-75" target="_blank" rel="noreferrer">
                 <span className="sr-only"> Facebook </span>
@@ -116,7 +116,7 @@ const UserFooter = () => {
             <div>
               <p className="font-medium">Download</p>
               <nav className="flex flex-col mt-4 space-y-2 text-sm ">
-                <img src="./playstore.png" alt="Download" />
+                <img src="./playstore.png" alt="Download" className="w-32" />
               </nav>
             </div>
           </div>
