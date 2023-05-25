@@ -79,7 +79,7 @@ const UserNavbar = () => {
       {!nav && (
         <div
           className={`flex items-center justify-between w-full max-w-screen-xl px-4 mx-auto h-[92px] lg:hidden transition-all duration-700 `}
-          style={{ backgrooundImage: url("./loginBackground.png") }}
+          style={{ backgrooundImage: "url(./loginBackground.png)" }}
         >
           <h1 className="text-2xl font-bold">Meddy</h1>
           <MenuIcon
@@ -91,7 +91,7 @@ const UserNavbar = () => {
 
       <div
         className={`flex transition-all duration-700 `}
-        style={{ backgrooundImage: url("./loginBackground.png") }}
+        style={{ backgrooundImage: "url(./loginBackground.png)" }}
       >
         <div className="hidden lg:flex items-center justify-between  w-full max-w-screen-xl px-4 mx-auto h-[92px]">
           <img src="./logo.png" alt="logo" className="w-44" />
