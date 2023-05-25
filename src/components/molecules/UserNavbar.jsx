@@ -1,7 +1,10 @@
 import React, { useRef } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
-import Button from "@mui/material/Button";
-import { Link, NavLink } from "react-router-dom";
+import HomeIcon from "@mui/icons-material/Home";
+import NewspaperIcon from "@mui/icons-material/Newspaper";
+import MedicationLiquidIcon from "@mui/icons-material/MedicationLiquid";
+import TroubleshootIcon from "@mui/icons-material/Troubleshoot";
+import { NavLink } from "react-router-dom";
 
 const UserNavbar = () => {
   const [nav, setNav] = React.useState(false);
@@ -11,18 +14,22 @@ const UserNavbar = () => {
     {
       menuList: "Beranda",
       menuLink: "/",
+      menuIcon: <HomeIcon />,
     },
     {
       menuList: "Artikel",
       menuLink: "/artikel",
+      menuIcon: <NewspaperIcon />,
     },
     {
-      menuList: "Informasi Obat",
+      menuList: "Info Obat",
       menuLink: "/info",
+      menuIcon: <MedicationLiquidIcon />,
     },
     {
       menuList: "Apotek",
       menuLink: "/cari",
+      menuIcon: <TroubleshootIcon />,
     },
   ];
 
@@ -51,7 +58,7 @@ const UserNavbar = () => {
           onClick={handleNav}
         >
           <div className="flex flex-col gap-4" ref={navRef}>
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col items-center justify-center w-full max-w-sm gap-4">
               {navMenu.map((item, index) => {
                 return (
                   <NavLink
@@ -68,6 +75,7 @@ const UserNavbar = () => {
                     spy={true}
                     smooth={true}
                   >
+                    {item.menuIcon}
                     {item.menuList}
                   </NavLink>
                 );
@@ -79,7 +87,7 @@ const UserNavbar = () => {
       {!nav && (
         <div
           className={`flex items-center justify-between w-full max-w-screen-xl px-4 mx-auto h-[92px] lg:hidden transition-all duration-700 `}
-          style={{ backgrooundImage: "url(./loginBackground.png)" }}
+          style={{ backgroundImage: `url('./loginBackground.png')` }}
         >
           <h1 className="text-2xl font-bold">Meddy</h1>
           <MenuIcon
@@ -91,7 +99,7 @@ const UserNavbar = () => {
 
       <div
         className={`flex transition-all duration-700 `}
-        style={{ backgrooundImage: "url(./loginBackground.png)" }}
+        style={{ backgroundImage: `url('./loginBackground.png')` }}
       >
         <div className="hidden lg:flex items-center justify-between  w-full max-w-screen-xl px-4 mx-auto h-[92px]">
           <img src="./logo.png" alt="logo" className="w-44" />
@@ -103,8 +111,8 @@ const UserNavbar = () => {
                     key={index}
                     className={({ isActive }) =>
                       isActive
-                        ? `text-xl cursor-pointer hover:text-primary hover:border-b hover:border-black font-bold text-slate-500 hover:font-bold`
-                        : "text-xl cursor-pointer font-extralight hover:text-primary  hover:border-b hover:border-black"
+                        ? `text-xl cursor-pointer hover:text-blue-900 hover:border-b hover:border-black font-bold text-blue-950 hover:font-bold`
+                        : "text-xl cursor-pointer font-extralight hover:text-blue-900  hover:border-b hover:border-black"
                     }
                     to={item.menuLink}
                     spy={true}

@@ -8,7 +8,7 @@ const UserFooter = () => {
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div className="flex flex-col justify-between">
             <img src="./logo.png" alt="logo" className="w-52" />
-            <Link to="/login" className="max-w-xs mt-4 text-sm">
+            <Link to="/login" className="max-w-xs mt-4 text-sm underline">
               Login Admin
             </Link>
             <div className="flex mt-8 space-x-6 ">
