@@ -17,7 +17,7 @@ const Login = () => {
                 className="text-lg font-bold lg:text-xl text-primary"
               />
             </div>
-            <p className="text-lg font-thin lg:text-xl">
+            <p className="text-lg font-thin">
               Silahkan login untuk masuk ke dashboard
             </p>
           </div>

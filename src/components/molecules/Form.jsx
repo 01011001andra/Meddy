@@ -15,7 +15,6 @@ const Form = () => {
           content="Login"
           onClick={() => {
             navigate("/");
-            console.log("berhasil");
           }}
         />
         <div className="flex items-center justify-between">
