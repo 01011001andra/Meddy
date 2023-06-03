@@ -103,16 +103,16 @@ const sideBarMenu = [
   },
 ];
 
-export default function ApotekerMainLayout({ children }) {
+export default function ApotekerMainLayout() {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
 
   const handleDrawer = () => {
     setOpen(!open);
   };
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", backgroundColor: "#f5f5f5", height: "100vh" }}>
       <CssBaseline />
       <Drawer
         PaperProps={{
@@ -213,8 +213,16 @@ export default function ApotekerMainLayout({ children }) {
           ))}
         </List>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <DrawerHeader />
+      <Box
+        component="main"
+        sx={{
+          flexGrow: 1,
+          p: 3,
+          width: "100%",
+          minHeight: "100vh",
+          overflow: "auto",
+        }}
+      >
         <Outlet />
       </Box>
     </Box>
