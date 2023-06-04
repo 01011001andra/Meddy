@@ -5,6 +5,7 @@ import NewspaperIcon from "@mui/icons-material/Newspaper";
 import MedicationLiquidIcon from "@mui/icons-material/MedicationLiquid";
 import TroubleshootIcon from "@mui/icons-material/Troubleshoot";
 import { NavLink } from "react-router-dom";
+import { Search, Switches } from "../atoms";
 
 const UserNavbar = () => {
   const [nav, setNav] = React.useState(false);
@@ -51,7 +52,7 @@ const UserNavbar = () => {
   });
 
   return (
-    <nav className="fixed w-full text-white">
+    <nav className="fixed z-50 w-full text-white">
       {nav ? (
         <div
           className={`flex flex-col items-center justify-center w-full min-h-screen  bg-black/50 lg:hidden`}
@@ -87,7 +88,7 @@ const UserNavbar = () => {
       {!nav && (
         <div
           className={`flex items-center justify-between w-full max-w-screen-xl px-4 mx-auto h-[92px] lg:hidden transition-all duration-700 `}
-          style={{ backgroundImage: `url('./loginBackground.png')` }}
+          // style={{ backgroundImage: `url('./loginBackground.png')` }}
         >
           <h1 className="text-2xl font-bold">Meddy</h1>
           <MenuIcon
@@ -98,21 +99,21 @@ const UserNavbar = () => {
       )}
 
       <div
-        className={`flex transition-all duration-700 `}
-        style={{ backgroundImage: `url('./loginBackground.png')` }}
+        className={`flex `}
+        // style={{ backgroundImage: `url('./loginBackground.png')` }}
       >
         <div className="hidden lg:flex items-center justify-between  w-full max-w-screen-xl px-4 mx-auto h-[92px]">
           <img src="./logo.png" alt="logo" className="w-44" />
-          <div className="flex gap-8">
-            <div className="flex gap-8">
+          <div className="flex gap-8 ">
+            <div className="flex items-center gap-8">
               {navMenu.map((item, index) => {
                 return (
                   <NavLink
                     key={index}
                     className={({ isActive }) =>
                       isActive
-                        ? `text-xl cursor-pointer hover:text-blue-900 hover:border-b hover:border-black font-bold text-blue-950 hover:font-bold`
-                        : "text-xl cursor-pointer font-extralight hover:text-blue-900  hover:border-b hover:border-black"
+                        ? `text-xl cursor-pointer hover:text-[#D0F9F8] hover:border-b hover:border-black border-b font-bold text-[#8EDBF6]  over:font-bold`
+                        : "text-xl cursor-pointer font-extralight hover:text-[#D0F9F8]  hover:border-b hover:border-black"
                     }
                     to={item.menuLink}
                     spy={true}
@@ -123,17 +124,10 @@ const UserNavbar = () => {
                 );
               })}
             </div>
-            {/* <Button
-              style={{
-                borderRadius: 35,
-              }}
-              to="/login"
-              component={Link}
-              className="bg-red-700 rounded-full"
-              variant="contained"
-            >
-              Login
-            </Button> */}
+          </div>
+          <div className="flex gap-3">
+            <Search />
+            <Switches />
           </div>
         </div>
       </div>

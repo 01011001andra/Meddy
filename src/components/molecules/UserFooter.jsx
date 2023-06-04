@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const UserFooter = () => {
   return (
-    <footer className="text-white bg-gradient-to-r bg-primary">
+    <footer className="text-white bg-gradient-to-r bg-primary dark:bg-slate-900">
       <div className="max-w-screen-xl px-4 py-16 mx-auto">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div className="flex flex-col justify-between">

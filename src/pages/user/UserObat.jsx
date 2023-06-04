@@ -10,7 +10,7 @@ const UserObat = () => {
     });
   }, []);
   return (
-    <div className="min-h-screen pt-24">
+    <div className="min-h-screen pt-24 dark:bg-slate-900">
       <h1>Informasi Obat</h1>
     </div>
   );

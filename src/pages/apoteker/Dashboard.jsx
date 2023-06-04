@@ -11,14 +11,13 @@ const Dashboard = () => {
             Medichine <br />
             Teddy
           </h1>
-          <img src="./asd.png" alt="asd" className="flex md:hidden" />
-          <p className="text-sm ">
+          <p className="text-sm md:text-base">
             "Meddy juga membantu pengguna untuk mencari informasi dengan lebih
             mudah dan etisien serta memantau dan mengelola konsumsi obat dengan
             baik."
           </p>
         </div>
-        <img src="./asd.png" alt="asd" className="hidden md:flex" />
+        <img src="./dokter.png" alt="asd" className="hidden w-64 md:flex" />
       </div>
       <h1 className="text-3xl font-bold">Section</h1>
       <div className="flex flex-wrap w-full gap-5">
