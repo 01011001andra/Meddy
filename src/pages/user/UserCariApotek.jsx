@@ -10,7 +10,7 @@ const UserCariApotek = () => {
     });
   }, []);
   return (
-    <div className="min-h-screen pt-24">
+    <div className="min-h-screen pt-24 dark:bg-slate-900 bg-primary">
       <h1>Cari Apotek</h1>
     </div>
   );
