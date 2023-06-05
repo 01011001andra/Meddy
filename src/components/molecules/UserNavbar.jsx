@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import HomeIcon from "@mui/icons-material/Home";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
@@ -8,8 +8,10 @@ import { NavLink } from "react-router-dom";
 import { Search, Switches } from "../atoms";
 
 const UserNavbar = () => {
-  const [nav, setNav] = React.useState(false);
+  const [nav, setNav] = useState(false);
+  const [showNavbar, setShowNavbar] = useState(true);
   const [bgNav, setBgNav] = React.useState(false);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
 
   const navMenu = [
     {
@@ -36,10 +38,7 @@ const UserNavbar = () => {
 
   const navRef = useRef(null);
 
-  const handleNav = (event) => {
-    if (navRef.current && navRef.current.contains(event.target)) {
-      return;
-    }
+  const handleNav = () => {
     setNav(!nav);
   };
 
@@ -51,45 +50,65 @@ const UserNavbar = () => {
     }
   });
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.pageYOffset;
+
+      if (currentScrollPos > prevScrollPos) {
+        setShowNavbar(false);
+      } else {
+        setShowNavbar(true);
+      }
+
+      setPrevScrollPos(currentScrollPos);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [prevScrollPos]);
+
   return (
-    <nav className="fixed z-50 w-full text-white">
-      {nav ? (
+    <nav
+      id="nav-scroll"
+      className={`fixed z-50 w-full transition-all duration-700 text-white ${
+        showNavbar ? "" : "-translate-y-56"
+      } ${!bgNav ? "" : "bg-primary/60 dark:bg-black/60"} `}
+    >
+      {nav && (
         <div
-          className={`flex flex-col items-center justify-center w-full min-h-screen  bg-black/50 lg:hidden`}
+          className="flex flex-col items-center justify-center w-full min-h-screen bg-black/50 lg:hidden"
           onClick={handleNav}
         >
           <div className="flex flex-col gap-4" ref={navRef}>
             <div className="flex flex-col items-center justify-center w-full max-w-sm gap-4">
-              {navMenu.map((item, index) => {
-                return (
-                  <NavLink
-                    onClick={() => {
-                      setNav(!nav);
-                    }}
-                    key={index}
-                    className={({ isActive }) =>
-                      isActive
-                        ? "flex flex-col items-center text-center justify-center w-24 h-24 transition-all duration-300 border rounded-xl hover:bg-primary bg-primary text-white hover:scale-125"
-                        : "flex flex-col items-center text-center justify-center w-24 h-24 transition-all duration-300 border rounded-xl hover:bg-primary text-white hover:scale-125"
-                    }
-                    to={item.menuLink}
-                    spy={true}
-                    smooth={true}
-                  >
-                    {item.menuIcon}
-                    {item.menuList}
-                  </NavLink>
-                );
-              })}
+              {navMenu.map((item, index) => (
+                <NavLink
+                  key={index}
+                  onClick={() => {
+                    setNav(!nav);
+                  }}
+                  className={`
+                    flex flex-col items-center text-center  justify-center w-24 h-24 transition-all duration-300 border rounded-xl hover:bg-primary text-white hover:scale-125
+                    ${item.menuLink === "/" ? "border-b-4 border-primary" : ""}
+                  `}
+                  to={item.menuLink}
+                  spy={true}
+                  smooth={true}
+                >
+                  {item.menuIcon}
+                  {item.menuList}
+                </NavLink>
+              ))}
             </div>
           </div>
         </div>
-      ) : null}
+      )}
+
       {!nav && (
-        <div
-          className={`flex items-center justify-between w-full max-w-screen-xl px-4 mx-auto h-[92px] lg:hidden transition-all duration-700 `}
-          // style={{ backgroundImage: `url('./loginBackground.png')` }}
-        >
+        <div className="flex items-center justify-between w-full max-w-screen-xl px-4 mx-auto h-[92px] lg:hidden transition-all duration-700 ">
           <h1 className="text-2xl font-bold">Meddy</h1>
           <MenuIcon
             style={{ fontSize: "50px", cursor: "pointer" }}
@@ -98,37 +117,30 @@ const UserNavbar = () => {
         </div>
       )}
 
-      <div
-        className={`flex `}
-        // style={{ backgroundImage: `url('./loginBackground.png')` }}
-      >
-        <div className="hidden lg:flex items-center justify-between  w-full max-w-screen-xl px-4 mx-auto h-[92px]">
-          <img src="./logo.png" alt="logo" className="w-44" />
-          <div className="flex gap-8 ">
-            <div className="flex items-center gap-8">
-              {navMenu.map((item, index) => {
-                return (
-                  <NavLink
-                    key={index}
-                    className={({ isActive }) =>
-                      isActive
-                        ? `text-xl cursor-pointer hover:text-[#D0F9F8] hover:border-b hover:border-black border-b font-bold text-[#8EDBF6]  over:font-bold`
-                        : "text-xl cursor-pointer font-extralight hover:text-[#D0F9F8]  hover:border-b hover:border-black"
-                    }
-                    to={item.menuLink}
-                    spy={true}
-                    smooth={true}
-                  >
-                    {item.menuList}
-                  </NavLink>
-                );
-              })}
-            </div>
+      <div className="hidden lg:flex items-center justify-between w-full max-w-screen-xl px-4 mx-auto h-[92px]">
+        <img src="./logo.png" alt="logo" className="w-44" />
+        <div className="flex gap-8">
+          <div className="flex items-center gap-8">
+            {navMenu.map((item, index) => (
+              <NavLink
+                key={index}
+                className={({ isActive }) =>
+                  isActive
+                    ? `text-xl cursor-pointer hover:text-[#D0F9F8] hover:border-b hover:border-black border-b font-bold text-[#8EDBF6] dark:text-[#8EDBF6] over:font-bold`
+                    : "text-xl cursor-pointer text-white font-extralight hover:text-[#D0F9F8]  hover:border-b hover:border-black"
+                }
+                to={item.menuLink}
+                spy={true}
+                smooth={true}
+              >
+                {item.menuList}
+              </NavLink>
+            ))}
           </div>
-          <div className="flex gap-3">
-            <Search />
-            <Switches />
-          </div>
+        </div>
+        <div className="flex gap-3">
+          <Search />
+          <Switches />
         </div>
       </div>
     </nav>
