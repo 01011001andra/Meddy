@@ -133,7 +133,12 @@ export default function ApotekerMainLayout() {
             )}
           </IconButton>
         </DrawerHeader>
-        <Divider />
+        <img
+          src="/logo.png"
+          alt="logo"
+          className={`px-4 pb-3 ${!open && "hidden"}`}
+        />
+        <Divider variant="middle" className="bg-white" />
         <List>
           {sideBarMenu.map((item, index) => (
             <Link to={item.menuLink}>
@@ -171,7 +176,7 @@ export default function ApotekerMainLayout() {
             </Link>
           ))}
         </List>
-        <Divider />
+        <Divider variant="middle" className="bg-white" />
         <List>
           {[
             {

@@ -30,8 +30,8 @@ const Login = () => {
         </div>
       </div>
       <div
-        className="flex-col items-center justify-center hidden w-full min-h-screen gap-6 px-4 bg-cover md:flex md:w-1/2"
-        style={{ backgroundImage: "url('./loginBackground.png')" }}
+        className="flex-col items-center justify-center hidden w-full min-h-screen gap-6 px-4 bg-cover bg-primary dark:bg-slate-800 md:flex md:w-1/2"
+        style={{ backgroundImage: "url('./loginPattern.png')" }}
       >
         <img
           src="./loginContent.png"

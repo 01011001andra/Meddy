@@ -1,18 +1,20 @@
 import React from "react";
 import { animateScroll as scroll } from "react-scroll";
 import AOS from "aos";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import "aos/dist/aos.css";
-import { Button, Carousel } from "../../components";
+import { Button, Carousel, CarouselBerita } from "../../components";
 import { styles } from "../../utils/mainStyle";
+import { Link } from "react-router-dom";
 
 const UserHome = () => {
-  // React.useEffect(() => {
-  //   scroll.scrollToTop({
-  //     duration: 1000, // durasi animasi scroll (ms)
-  //     delay: 0, // jeda sebelum animasi dimulai (ms)
-  //     smooth: "easeInOutQuint", // jenis easing pada animasi scroll
-  //   });
-  // }, []);
+  React.useEffect(() => {
+    scroll.scrollToTop({
+      duration: 1000, // durasi animasi scroll (ms)
+      delay: 0, // jeda sebelum animasi dimulai (ms)
+      smooth: "easeInOutQuint", // jenis easing pada animasi scroll
+    });
+  }, []);
   React.useEffect(() => {
     AOS.init();
   }, []);
@@ -86,7 +88,10 @@ const UserHome = () => {
       <div className="w-full bg-secondary dark:bg-slate-900">
         <div className="flex flex-col items-center w-full min-h-screen gap-8 mx-auto max-w-7xl">
           <>
-            <div className="flex flex-col items-center gap-3">
+            <div
+              className="flex flex-col items-center gap-3"
+              data-aos="fade-up"
+            >
               <h1 className={`${styles.sectionHeadText}`}>Informasi Obat</h1>
               <p className={`${styles.sectionSubText} text-center`}>
                 Informasi dan kandungan mengenai obat agar lebih paham dalam
@@ -108,8 +113,19 @@ const UserHome = () => {
               content6="6 Kaplet Procold Flu"
             />
           </>
+          <div className="flex justify-center w-full gap-2 md:justify-end">
+            <Link
+              to="/info"
+              className="text-xl font-bold text-primary hover:text-primary/60"
+            >
+              Selengkapnya <ArrowForwardIcon />
+            </Link>
+          </div>
           <>
-            <div className="flex flex-col items-center gap-3">
+            <div
+              className="flex flex-col items-center gap-3"
+              data-aos="fade-up"
+            >
               <h1 className={`${styles.sectionHeadText}`}>Berita</h1>
               <p className={`${styles.sectionSubText} text-center`}>
                 Tahukah kamu bahwa jika kita mengkonsumsi obat tanpa informasi
@@ -117,7 +133,7 @@ const UserHome = () => {
                 bahaya, yuk simak di bawah ini!
               </p>
             </div>
-            <Carousel
+            <CarouselBerita
               slide1="Procold Flu"
               slide2="Procold Flu"
               slide3="Procold Flu"
@@ -131,6 +147,14 @@ const UserHome = () => {
               content5="6 Kaplet Procold Flu"
               content6="6 Kaplet Procold Flu"
             />
+            <div className="flex justify-center w-full gap-2 md:justify-end">
+              <Link
+                to="/artikel"
+                className="text-xl font-bold text-primary hover:text-primary/60"
+              >
+                Selengkapnya <ArrowForwardIcon />
+              </Link>
+            </div>
           </>
           <div className="pb-20"></div>
         </div>

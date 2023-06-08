@@ -4,8 +4,8 @@ import HomeIcon from "@mui/icons-material/Home";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
 import MedicationLiquidIcon from "@mui/icons-material/MedicationLiquid";
 import TroubleshootIcon from "@mui/icons-material/Troubleshoot";
-import { NavLink } from "react-router-dom";
-import { Search, Switches } from "../atoms";
+import { Link, NavLink } from "react-router-dom";
+import { Switches } from "../atoms";
 
 const UserNavbar = () => {
   const [nav, setNav] = useState(false);
@@ -138,9 +138,14 @@ const UserNavbar = () => {
             ))}
           </div>
         </div>
-        <div className="flex gap-3">
-          <Search />
+        <div className="flex items-center gap-3">
           <Switches />
+          <Link
+            to="/login"
+            className="px-10 py-4 font-bold rounded-full text-primary dark:text-black bg-secondary hover:bg-secondary/60"
+          >
+            LOGIN
+          </Link>
         </div>
       </div>
     </nav>

@@ -6,6 +6,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
 const Carousel = (props) => {
+  const [responsive, setResponsive] = React.useState(false);
+
   const {
     slide1,
     slide2,
@@ -20,16 +22,33 @@ const Carousel = (props) => {
     content5,
     content6,
   } = props;
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      setResponsive(window.innerWidth >= 900); // Adjust the breakpoint as per your requirements
+    };
+
+    handleResize(); // Set initial value
+    window.addEventListener("resize", handleResize); // Listen for window resize events
+
+    return () => {
+      window.removeEventListener("resize", handleResize); // Clean up the event listener on component unmount
+    };
+  }, []);
+
+  const slidesPerView = responsive ? 4 : 1;
+
   return (
-    <div className="w-full ">
+    <div className={`w-full`}>
       <Swiper
         spaceBetween={50}
-        slidesPerView={3}
+        slidesPerView={slidesPerView}
         onSlideChange={() => console.log("slide change")}
         onSwiper={(swiper) => console.log(swiper)}
+        className="px-4 pb-5 xl:px-0"
       >
         <SwiperSlide
-          className="flex flex-col items-center py-10 text-white bg-no-repeat bg-cover justify-centertext-white rounded-2xl"
+          className="flex flex-col items-center justify-center py-10 text-white bg-no-repeat bg-cover rounded-2xl"
           style={{ backgroundImage: "url('./cardBg.png')" }}
         >
           <img src="./obat.png" alt="obat" />
@@ -37,7 +56,7 @@ const Carousel = (props) => {
           <p className="text-white">{content1}</p>
         </SwiperSlide>
         <SwiperSlide
-          className="flex flex-col items-center py-10 text-white bg-no-repeat bg-cover justify-centertext-white rounded-2xl"
+          className="flex flex-col items-center justify-center py-10 text-white bg-no-repeat bg-cover rounded-2xl"
           style={{ backgroundImage: "url('./cardBg.png')" }}
         >
           <img src="./obat.png" alt="obat" />
@@ -45,7 +64,7 @@ const Carousel = (props) => {
           <p className="text-white">{content2}</p>
         </SwiperSlide>
         <SwiperSlide
-          className="flex flex-col items-center py-10 text-white bg-no-repeat bg-cover justify-centertext-white rounded-2xl"
+          className="flex flex-col items-center justify-center py-10 text-white bg-cover text-whitebg-no-repeat rounded-2xl"
           style={{ backgroundImage: "url('./cardBg.png')" }}
         >
           <img src="./obat.png" alt="obat" />
@@ -53,7 +72,7 @@ const Carousel = (props) => {
           <p className="text-white">{content3}</p>
         </SwiperSlide>
         <SwiperSlide
-          className="flex flex-col items-center py-10 text-white bg-no-repeat bg-cover justify-centertext-white rounded-2xl"
+          className="flex flex-col items-center justify-center py-10 text-white bg-no-repeat bg-cover rounded-2xl"
           style={{ backgroundImage: "url('./cardBg.png')" }}
         >
           <img src="./obat.png" alt="obat" />
@@ -61,7 +80,7 @@ const Carousel = (props) => {
           <p className="text-white">{content4}</p>
         </SwiperSlide>
         <SwiperSlide
-          className="flex flex-col items-center py-10 text-white bg-no-repeat bg-cover justify-centertext-white rounded-2xl"
+          className="flex flex-col items-center justify-center py-10 text-white bg-no-repeat bg-cover border rounded-2xl"
           style={{ backgroundImage: "url('./cardBg.png')" }}
         >
           <img src="./obat.png" alt="obat" />
@@ -69,7 +88,7 @@ const Carousel = (props) => {
           <p className="text-white">{content5}</p>
         </SwiperSlide>
         <SwiperSlide
-          className="flex flex-col items-center py-10 text-white bg-no-repeat bg-cover justify-centertext-white rounded-2xl"
+          className="flex flex-col items-center justify-center py-10 text-white bg-no-repeat bg-cover rounded-2xl "
           style={{ backgroundImage: "url('./cardBg.png')" }}
         >
           <img src="./obat.png" alt="obat" />

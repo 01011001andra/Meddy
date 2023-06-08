@@ -21,10 +21,8 @@ const Dashboard = () => {
       </div>
       <h1 className="text-3xl font-bold">Section</h1>
       <div className="flex flex-wrap w-full gap-5">
-        <ApotekerDashboardCard amount="Total Obat" number="10" />
-        <ApotekerDashboardCard amount="Total Obat" number="10" />
-        <ApotekerDashboardCard amount="Total Obat" number="10" />
-        <ApotekerDashboardCard amount="Total Obat" number="10" />
+        <ApotekerDashboardCard amount="Berita" url="AdminObat.png" />
+        <ApotekerDashboardCard amount="Obat" url="AdminBerita.png" />
         <div className="pb-20"></div>
       </div>
     </div>
