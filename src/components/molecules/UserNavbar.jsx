@@ -20,17 +20,17 @@ const UserNavbar = () => {
       menuIcon: <HomeIcon />,
     },
     {
-      menuList: "berita",
+      menuList: "Berita",
       menuLink: "/berita",
       menuIcon: <NewspaperIcon />,
     },
     {
-      menuList: "Info Obat",
+      menuList: "Informasi Obat",
       menuLink: "/info",
       menuIcon: <MedicationLiquidIcon />,
     },
     {
-      menuList: "Apotek",
+      menuList: "Temukan Apotek",
       menuLink: "/cari",
       menuIcon: <TroubleshootIcon />,
     },
