@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import {
   UserHome,
   MainLayout,
-  UserArtikel,
+  UserBerita,
   UserCariApotek,
   UserObat,
   ApotekerMainLayout,
@@ -14,8 +14,8 @@ import {
 import Login from "./pages/user/Login";
 
 const App = () => {
-  const [apoteker, setApoteker] = React.useState(true);
-  const [superAdmin, setSuperAdmin] = React.useState(false);
+  const [apoteker, setApoteker] = React.useState(false);
+  const [superAdmin, setSuperAdmin] = React.useState(true);
 
   if (apoteker) {
     return (
@@ -23,7 +23,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<MainLayout />}>
             <Route index element={<UserHome />} />
-            <Route path="/artikel" element={<UserArtikel />} />
+            <Route path="/berita" element={<UserBerita />} />
             <Route path="/info" element={<UserObat />} />
             <Route path="/cari" element={<UserCariApotek />} />
           </Route>
@@ -45,7 +45,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<MainLayout />}>
             <Route index element={<UserHome />} />
-            <Route path="artikel" element={<UserArtikel />} />
+            <Route path="berita" element={<UserBerita />} />
             <Route path="info" element={<UserObat />} />
             <Route path="cari" element={<UserCariApotek />} />
           </Route>
@@ -61,7 +61,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<UserHome />} />
-          <Route path="artikel" element={<UserArtikel />} />
+          <Route path="berita" element={<UserBerita />} />
           <Route path="info" element={<UserObat />} />
           <Route path="cari" element={<UserCariApotek />} />
         </Route>
