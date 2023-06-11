@@ -9,9 +9,10 @@ const UserArtikel = () => {
       smooth: "easeInOutQuint", // jenis easing pada animasi scroll
     });
   }, []);
+  
   return (
     <div className="min-h-screen pt-24 dark:bg-slate-900 bg-primary">
-      <h1>Artikel</h1>
+      <h1>Berita</h1>
     </div>
   );
 };
