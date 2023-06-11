@@ -20,8 +20,8 @@ const UserNavbar = () => {
       menuIcon: <HomeIcon />,
     },
     {
-      menuList: "Artikel",
-      menuLink: "/artikel",
+      menuList: "berita",
+      menuLink: "/berita",
       menuIcon: <NewspaperIcon />,
     },
     {
