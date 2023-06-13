@@ -10,6 +10,7 @@ import {
   Dashboard,
   TambahObat,
   TambahBlog,
+  UserDetailBerita,
 } from "./pages";
 import Login from "./pages/user/Login";
 
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="/" element={<MainLayout />}>
             <Route index element={<UserHome />} />
             <Route path="/berita" element={<UserBerita />} />
+            <Route path="berita/:id" element={<UserDetailBerita />} />
             <Route path="/info" element={<UserObat />} />
             <Route path="/cari" element={<UserCariApotek />} />
           </Route>
@@ -46,6 +48,7 @@ const App = () => {
           <Route path="/" element={<MainLayout />}>
             <Route index element={<UserHome />} />
             <Route path="berita" element={<UserBerita />} />
+            <Route path="berita/:id" element={<UserDetailBerita />} />
             <Route path="info" element={<UserObat />} />
             <Route path="cari" element={<UserCariApotek />} />
           </Route>
@@ -62,6 +65,7 @@ const App = () => {
         <Route path="/" element={<MainLayout />}>
           <Route index element={<UserHome />} />
           <Route path="berita" element={<UserBerita />} />
+          <Route path="berita/:id" element={<UserDetailBerita />} />
           <Route path="info" element={<UserObat />} />
           <Route path="cari" element={<UserCariApotek />} />
         </Route>

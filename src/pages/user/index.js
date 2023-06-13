@@ -5,4 +5,14 @@ import UserObat from "./UserObat";
 import UserCariApotek from "./UserCariApotek";
 import MainLayout from "./MainLayout";
 
-export { UserHome, Login, MainLayout, UserCariApotek, UserObat, UserBerita };
+import UserDetailBerita from "./UserDetailBerita";
+
+export {
+  UserHome,
+  Login,
+  MainLayout,
+  UserCariApotek,
+  UserObat,
+  UserBerita,
+  UserDetailBerita,
+};
