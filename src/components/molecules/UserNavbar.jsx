@@ -118,7 +118,7 @@ const UserNavbar = () => {
       )}
 
       <div className="hidden lg:flex items-center justify-between w-full max-w-screen-xl px-4 mx-auto h-[92px]">
-        <img src="./logo.png" alt="logo" className="w-44" />
+        <img src="../logo.png" alt="logo" className="w-44" />
         <div className="flex gap-8">
           <div className="flex items-center gap-8">
             {navMenu.map((item, index) => (

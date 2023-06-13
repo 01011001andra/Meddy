@@ -7,7 +7,7 @@ const UserFooter = () => {
       <div className="max-w-screen-xl px-4 py-16 mx-auto">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div className="flex flex-col justify-between">
-            <img src="./logo.png" alt="logo" className="w-52" />
+            <img src="../logo.png" alt="logo" className="w-52" />
             <Link to="/login" className="max-w-xs mt-4 text-sm underline">
               Login Form
             </Link>
@@ -122,7 +122,7 @@ const UserFooter = () => {
             <div>
               <p className="font-medium">Download</p>
               <nav className="flex flex-col mt-4 space-y-2 text-sm ">
-                <img src="./playstore.png" alt="Download" className="w-32" />
+                <img src="../playstore.png" alt="Download" className="w-32" />
               </nav>
             </div>
           </div>

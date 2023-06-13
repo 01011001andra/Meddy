@@ -10,6 +10,8 @@ import {
   Dashboard,
   TambahObat,
   TambahBlog,
+  UserDetailBerita,
+  UserDetailObat
 } from "./pages";
 import Login from "./pages/user/Login";
 
@@ -24,7 +26,9 @@ const App = () => {
           <Route path="/" element={<MainLayout />}>
             <Route index element={<UserHome />} />
             <Route path="/berita" element={<UserBerita />} />
+            <Route path="berita/:id" element={<UserDetailBerita />} />
             <Route path="/info" element={<UserObat />} />
+            <Route path="info/:id" element={<UserDetailObat />} />
             <Route path="/cari" element={<UserCariApotek />} />
           </Route>
           <Route path="/apoteker" element={<ApotekerMainLayout />}>
@@ -46,7 +50,9 @@ const App = () => {
           <Route path="/" element={<MainLayout />}>
             <Route index element={<UserHome />} />
             <Route path="berita" element={<UserBerita />} />
+            <Route path="berita/:id" element={<UserDetailBerita />} />
             <Route path="info" element={<UserObat />} />
+            <Route path="info/:id" element={<UserDetailObat />} />
             <Route path="cari" element={<UserCariApotek />} />
           </Route>
           <Route path="/login" element={<Login />} />
@@ -62,7 +68,9 @@ const App = () => {
         <Route path="/" element={<MainLayout />}>
           <Route index element={<UserHome />} />
           <Route path="berita" element={<UserBerita />} />
+          <Route path="berita/:id" element={<UserDetailBerita />} />
           <Route path="info" element={<UserObat />} />
+          <Route path="info/:id" element={<UserDetailObat />} />
           <Route path="cari" element={<UserCariApotek />} />
         </Route>
         <Route path="/login" element={<Login />} />
