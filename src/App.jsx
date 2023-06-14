@@ -18,8 +18,8 @@ import {
 import Login from "./pages/user/Login";
 
 const App = () => {
-  const [apoteker, setApoteker] = React.useState(false);
-  const [superAdmin, setSuperAdmin] = React.useState(true);
+  const [apoteker, setApoteker] = React.useState(true);
+  const [superAdmin, setSuperAdmin] = React.useState(false);
 
   if (apoteker) {
     return (

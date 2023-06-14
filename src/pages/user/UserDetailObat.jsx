@@ -1,6 +1,5 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { CarouselObat } from "../../components";
 import { ObatCard } from "../../components";
 import { styles } from "../../utils/mainStyle";
 import { Link } from "react-router-dom";
