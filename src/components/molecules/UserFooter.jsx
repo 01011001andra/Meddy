@@ -8,15 +8,7 @@ const UserFooter = () => {
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div className="flex flex-col justify-between">
             <img src="../logo.png" alt="logo" className="w-52" />
-            <Link to="/login" className="max-w-xs mt-4 text-sm underline">
-              Login Form
-            </Link>
-            <Link to="/apoteker" className="max-w-xs mt-4 text-sm underline">
-              Login Apoteker
-            </Link>
-            <Link to="/superadmin" className="max-w-xs mt-4 text-sm underline">
-              Login SuperAdmin
-            </Link>
+
             <div className="flex mt-8 space-x-6 ">
               <a className="hover:opacity-75" target="_blank" rel="noreferrer">
                 <span className="sr-only"> Facebook </span>
