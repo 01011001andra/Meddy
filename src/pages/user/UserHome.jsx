@@ -1,19 +1,18 @@
 import React from "react";
-import { animateScroll as scroll } from "react-scroll";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { Button, Carousel, CarouselBerita } from "../../components";
 import { styles } from "../../utils/mainStyle";
 import { Link } from "react-router-dom";
+import { useScrollToTop } from "../../hooks";
+
+import AOS from "aos";
 
 const UserHome = () => {
-  React.useEffect(() => {
-    scroll.scrollToTop({
-      duration: 1000, // durasi animasi scroll (ms)
-      delay: 0, // jeda sebelum animasi dimulai (ms)
-      smooth: "easeInOutQuint", // jenis easing pada animasi scroll
-    });
-  }, []);
+  useScrollToTop();
 
+  React.useEffect(() => {
+    AOS.init();
+  }, []);
   return (
     <>
       {/* Section 1 */}
