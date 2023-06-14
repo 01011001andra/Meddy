@@ -1,17 +1,11 @@
 import React from "react";
-import { animateScroll as scroll } from "react-scroll";
 import { styles } from "../../utils/mainStyle";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useScrollToTop } from "../../hooks";
 
 const UserCariApotek = () => {
-  React.useEffect(() => {
-    scroll.scrollToTop({
-      duration: 1000, // durasi animasi scroll (ms)
-      delay: 0, // jeda sebelum animasi dimulai (ms)
-      smooth: "easeInOutQuint", // jenis easing pada animasi scroll
-    });
-  }, []);
+  useScrollToTop();
   React.useEffect(() => {
     AOS.init();
   }, []);

@@ -2,6 +2,8 @@ import * as React from "react";
 import { Form, Switches } from "../../components";
 import { TypeAnimation } from "react-type-animation";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useEffect } from "react";
 
 const Login = () => {
   return (

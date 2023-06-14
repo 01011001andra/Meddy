@@ -9,20 +9,21 @@ import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import axios from "axios";
 
 const columns = [
   { id: "no", label: "No", minWidth: 10 },
-  { id: "code", label: "Gambar", minWidth: 10 },
+  { id: "name", label: "Name", minWidth: 10 },
   {
-    id: "nama",
-    label: "Nama",
+    id: "email",
+    label: "Email",
     minWidth: 10,
     align: "right",
     format: (value) => value.toLocaleString("en-US"),
   },
   {
-    id: "detail",
-    label: "Detail",
+    id: "role",
+    label: "Role",
     minWidth: 10,
     align: "right",
     format: (value) => value.toLocaleString("en-US"),
