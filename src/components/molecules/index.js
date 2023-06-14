@@ -8,6 +8,7 @@ import ObatCard from "./ObatCard"
 import CarouselObat from "./CarouselObat";
 import TableApoteker from "./TableApoteker";
 import BeritaCard from "./BeritaCard";
+import BoxObat from "./BoxObat";
 
 export {
   BeritaCard,
@@ -20,4 +21,5 @@ export {
   ObatCard,
   CarouselObat,
   TableApoteker,
+  BoxObat,
 };
