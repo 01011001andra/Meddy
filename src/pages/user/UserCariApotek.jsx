@@ -1,6 +1,8 @@
 import React from "react";
 import { animateScroll as scroll } from "react-scroll";
 import { styles } from "../../utils/mainStyle";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const UserCariApotek = () => {
   React.useEffect(() => {
@@ -9,6 +11,9 @@ const UserCariApotek = () => {
       delay: 0, // jeda sebelum animasi dimulai (ms)
       smooth: "easeInOutQuint", // jenis easing pada animasi scroll
     });
+  }, []);
+  React.useEffect(() => {
+    AOS.init();
   }, []);
   return (
     <div className="min-h-screen pt-24 dark:bg-slate-900 bg-primary">
