@@ -1,8 +1,6 @@
 import React from "react";
 import { animateScroll as scroll } from "react-scroll";
-import AOS from "aos";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import "aos/dist/aos.css";
 import { Button, Carousel, CarouselBerita } from "../../components";
 import { styles } from "../../utils/mainStyle";
 import { Link } from "react-router-dom";
@@ -15,17 +13,22 @@ const UserHome = () => {
       smooth: "easeInOutQuint", // jenis easing pada animasi scroll
     });
   }, []);
-  React.useEffect(() => {
-    AOS.init();
-  }, []);
+
   return (
     <>
       {/* Section 1 */}
       <div className="relative flex flex-col items-center justify-center min-h-screen bg-primary dark:bg-slate-900">
+        <div className="flex flex-col gap-3 md:hidden">
+          <h1 className="text-4xl font-bold text-center text-white">Meddy</h1>
+          <p className="flex w-full px-4 text-xl text-center text-white">
+            Meddy membantu pengguna untuk mencari informasi dengan lebih mudah
+            dan efisien serta memantau dan mengelola konsumsi obat dengan baik.
+          </p>
+        </div>
         <img
           src="./hero.png"
           alt="doctor"
-          className="absolute md:bottom-0 w-[1050px] 2xl:w-[1400px]"
+          className="absolute bottom-0 w-[1050px] 2xl:w-[1400px]"
         />
         <div
           className="relative flex-col items-center justify-center hidden w-full h-full md:flex "

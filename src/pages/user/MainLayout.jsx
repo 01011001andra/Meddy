@@ -1,6 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import { UserFooter, UserNavbar } from "../../components";
+import { UserFooter, UserNavbar } from "../../components/molecules";
 
 const MainLayout = () => {
   return (

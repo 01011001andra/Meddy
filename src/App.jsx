@@ -11,13 +11,15 @@ import {
   TambahObat,
   TambahBlog,
   UserDetailBerita,
-  UserDetailObat
+  UserDetailObat,
+  SuperMainLayout,
+  Kelola,
 } from "./pages";
 import Login from "./pages/user/Login";
 
 const App = () => {
-  const [apoteker, setApoteker] = React.useState(false);
-  const [superAdmin, setSuperAdmin] = React.useState(true);
+  const [apoteker, setApoteker] = React.useState(true);
+  const [superAdmin, setSuperAdmin] = React.useState(false);
 
   if (apoteker) {
     return (
@@ -54,6 +56,12 @@ const App = () => {
             <Route path="info" element={<UserObat />} />
             <Route path="info/:id" element={<UserDetailObat />} />
             <Route path="cari" element={<UserCariApotek />} />
+          </Route>
+          <Route path="/superadmin" element={<SuperMainLayout />}>
+            <Route index element={<Dashboard />} />
+            <Route path="tambahObat" element={<TambahObat />} />
+            <Route path="tambahBlog" element={<TambahBlog />} />
+            <Route path="kelola" element={<Kelola />} />
           </Route>
           <Route path="/login" element={<Login />} />
           <Route path="*" element={<h1>Not Found</h1>} />

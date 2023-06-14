@@ -64,7 +64,7 @@ const Carousel = (props) => {
           <p className="text-white">{content2}</p>
         </SwiperSlide>
         <SwiperSlide
-          className="flex flex-col items-center justify-center py-10 text-white bg-cover text-whitebg-no-repeat rounded-2xl"
+          className="flex flex-col items-center justify-center py-10 text-white bg-no-repeat bg-cover rounded-2xl"
           style={{ backgroundImage: "url('./cardBg.png')" }}
         >
           <img src="./obat.png" alt="obat" />
