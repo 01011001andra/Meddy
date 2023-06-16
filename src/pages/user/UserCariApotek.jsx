@@ -10,7 +10,7 @@ const UserCariApotek = () => {
     AOS.init();
   }, []);
   return (
-    <div className="min-h-screen pt-24 dark:bg-slate-900 bg-primary">
+    <div className="min-h-screen dark:bg-slate-900 bg-primary">
       <div
         className="relative flex flex-col items-center justify-center min-h-screen bg-primary dark:bg-slate-900"
         style={{ backgroundImage: "url('../loginPattern.png')" }}

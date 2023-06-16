@@ -6,6 +6,7 @@ import MedicationLiquidIcon from "@mui/icons-material/MedicationLiquid";
 import TroubleshootIcon from "@mui/icons-material/Troubleshoot";
 import { Link, NavLink } from "react-router-dom";
 import { Switches } from "../atoms";
+import { useSelector } from "react-redux";
 
 const UserNavbar = () => {
   const [nav, setNav] = useState(false);
@@ -48,6 +49,10 @@ const UserNavbar = () => {
     } else {
       setBgNav(false);
     }
+  });
+
+  const userData = useSelector((state) => {
+    return state?.auth?.user?.role;
   });
 
   useEffect(() => {
@@ -144,7 +149,7 @@ const UserNavbar = () => {
             to="/login"
             className="px-10 py-4 font-bold rounded-full text-primary dark:text-black bg-secondary hover:bg-secondary/60"
           >
-            LOGIN
+            {userData ? "Logout" : "Login"}
           </Link>
         </div>
       </div>

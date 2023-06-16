@@ -1,5 +1,6 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import {
   UserHome,
   MainLayout,
@@ -15,11 +16,40 @@ import {
   SuperMainLayout,
   Kelola,
 } from "./pages";
+import Swal from "sweetalert2";
 import Login from "./pages/user/Login";
 
 const App = () => {
-  const [apoteker, setApoteker] = React.useState(true);
-  const [superAdmin, setSuperAdmin] = React.useState(false);
+  const [apoteker, setApoteker] = React.useState(null);
+  const [superAdmin, setSuperAdmin] = React.useState(null);
+  const navigate = useNavigate();
+
+  const userData = useSelector((state) => {
+    return state?.auth?.user?.role;
+  });
+
+
+  React.useEffect(() => {
+    if (userData === "apoteker") {
+      navigate("/apoteker");
+      setApoteker(true);
+
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Login Berhasil",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      // setApoteker(true);
+    } else if (userData === "admin") {
+      navigate("/superAdmin");
+      // setSuperAdmin(true);
+    }
+    setSuperAdmin(true);
+
+    console.info(userData);
+  }, [userData]);
 
   if (apoteker) {
     return (
@@ -38,7 +68,7 @@ const App = () => {
             <Route path="tambahObat" element={<TambahObat />} />
             <Route path="tambahBlog" element={<TambahBlog />} />
           </Route>
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<h1>Not Found</h1>} />
           <Route path="*" element={<h1>Not Found</h1>} />
         </Routes>
       </div>
