@@ -1,64 +1,69 @@
-import React from 'react';
+import React from "react";
 import { styles } from "../../utils/mainStyle";
 import { ObatCard } from "../../components";
-import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import { MenuItem, Select } from "@mui/material";
+import axios from "axios";
 
 const UserObat = () => {
+  const [obat, setObat] = React.useState([]);
+
+  React.useEffect(() => {
+    axios
+      .get("http://localhost:5000/obats")
+      .then((res) => {
+        setObat(res.data);
+        console.info(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
+
   return (
-    <div className="min-h-screen pt-24 dark:bg-slate-900 bg-primary">
-       <div
+    <div className="min-h-screen dark:bg-slate-900 bg-primary">
+      <div
         className="h-[20vh] flex items-center justify-center bg-primary dark:bg-slate-900"
         style={{ backgroundImage: "url('../loginPattern.png')" }}
       >
-        <h1 className={`${styles.sectionHeadText} text-white`}>Informasi Obat</h1>
+        <h1 className={`${styles.sectionHeadText} text-white`}>
+          Informasi Obat
+        </h1>
       </div>
-      <div className="w-full min-h-screen bg-secondary dark:bg-slate-800 px-12">
-      <div className="flex md:flex-row flex-col gap-8 justify-center py-20 mx-6 xl:justify-between max-w-7xl">  
-      <div className='w-72 font-medium h-80'>
-        <div className='bg-primary text-white w-[340 px] h-[50px] p-2 flex items-center justify-between rounded'>
-            Kategori Obat
-            <ArrowDropUpIcon size={20}/>
-          </div>
-          <ul className='bg-slate-200 border-slate-400 border shadow-lg'>
-            <li className='p-2 text-sm hover:bg-primary hover:text-white'>Obat Tablet</li>
-            <li className='p-2 text-sm hover:bg-primary hover:text-white'>Obat Sirup</li>
-            <li className='p-2 text-sm hover:bg-primary hover:text-white'>Obat Kapsul</li>           
-          </ul>
-      </div>  
-          <div className="flex-col justify-center px-12">
-            <h1 className="tracking-wide text-2xl font-semibold ">Obat</h1>
-            <div className="flex flex-wrap justify-center gap-5 md:gap-6 xl:justify-start ">
-              <ObatCard url={"../bodrex.png"} title ="Paracetamol 500 Mg"/>
-              <ObatCard url={"../bodrex.png"} title="Paracetamol 500 Mg" />
-              <ObatCard url={"../bodrex.png"} title="Paracetamol 500 Mg" />
-              <ObatCard url={"../bodrex.png"} title="Paracetamol 500 Mg" />
-              <ObatCard url={"../bodrex.png"} title="Paracetamol 500 Mg" />
-              <ObatCard url={"../bodrex.png"} title="Paracetamol 500 Mg" />
+      <div className="w-full min-h-screen px-12 bg-secondary dark:bg-slate-800">
+        <div className="flex flex-col justify-center gap-8 mx-auto max-w-7xl">
+          <div className="flex flex-col items-center justify-center gap-5 px-12 md:items-start">
+            <Select
+              sx={{
+                marginTop: 5,
+                width: 250,
+                height: 50,
+              }}
+            >
+              <MenuItem value={1}>Red</MenuItem>
+              <MenuItem value={2}>Black</MenuItem>
+              <MenuItem value={3}>Blue</MenuItem>
+              <MenuItem value={4}>Green</MenuItem>
+              <MenuItem value={5}>Yellow</MenuItem>
+            </Select>
+            <h1 className="text-2xl font-semibold tracking-wide text-center md:text-start">
+              Obat
+            </h1>
+            <div className="flex flex-wrap justify-center gap-5 pb-10 md:gap-6 xl:justify-start">
+              {obat.map((item) => {
+                return (
+                  <ObatCard
+                    url={`../${item.gambar}`}
+                    title={item.name}
+                    linkID={`/info/${item.uuid}`}
+                  />
+                );
+              })}
             </div>
           </div>
-    </div>
-     <div className="flex justify-center rounded-lg items-center pb-10">
-         <button className="h-12 border-2 border-r-0 border-indigo-600 px-4 rounded-sm hover:bg-indigo-600 hover:text-white">
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" fill-rule="evenodd"></path>
-            </svg>
-         </button>
-         <button className="h-12 border-2  border-indigo-600 px-4 hover:text-primary">
-            <h1>1</h1>
-         </button>
-         <button className="h-12 border-2  border-indigo-600 px-4 hover:text-primary">
-            <h1>2</h1>
-         </button>
-         <button className="h-12 border-2  border-indigo-600 px-4 hover:text-primary">
-            <h1>3</h1>
-         </button>
-         <button className="h-12 border-2  border-indigo-600 px-4 rounded-sm hover:bg-indigo-600 hover:text-white">
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" fill-rule="evenodd"></path></svg>
-         </button>
+        </div>
       </div>
     </div>
-    </div>    
   );
 };
 
-export default UserObat
+export default UserObat;

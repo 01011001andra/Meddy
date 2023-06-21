@@ -20,6 +20,10 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import { Link, Outlet } from "react-router-dom";
 import { Avatar } from "@mui/material";
+import axios from "axios";
+import { useDeleteUserData } from "../../hooks";
+import { useDispatch } from "react-redux";
+import { LogOut } from "../../features/auth/authSlice";
 
 const drawerWidth = 240;
 
@@ -110,10 +114,15 @@ const sideBarMenu = [
 export default function SuperMainLayout() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const dispatch = useDispatch();
 
   const handleDrawer = () => {
     setOpen(!open);
   };
+  function handleDelete() {
+    localStorage.removeItem("users");
+    dispatch(LogOut());
+  }
 
   return (
     <Box sx={{ display: "flex", backgroundColor: "#f5f5f5", height: "100vh" }}>
@@ -145,12 +154,8 @@ export default function SuperMainLayout() {
         <Divider variant="middle" className="bg-white" />
         <List>
           {sideBarMenu.map((item, index) => (
-            <Link to={item.menuLink}>
-              <ListItem
-                key={item.menuName}
-                disablePadding
-                sx={{ display: "block" }}
-              >
+            <Link key={item.menuName} to={item.menuLink}>
+              <ListItem disablePadding sx={{ display: "block" }}>
                 <ListItemButton
                   sx={{
                     minHeight: 48,
@@ -188,12 +193,8 @@ export default function SuperMainLayout() {
               menuLink: "/",
             },
           ].map((text, index) => (
-            <Link to={text.menuLink}>
-              <ListItem
-                key={text.menuName}
-                disablePadding
-                sx={{ display: "block" }}
-              >
+            <Link key={text.menuName} to={text.menuLink} onClick={handleDelete}>
+              <ListItem disablePadding sx={{ display: "block" }}>
                 <ListItemButton
                   sx={{
                     minHeight: 48,

@@ -10,6 +10,9 @@ import TableRow from "@mui/material/TableRow";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import axios from "axios";
+import { useGetUsersQuery } from "../../features/users/usersSlice";
+import { getMe } from "../../features/auth/authSlice";
+import { useDispatch } from "react-redux";
 
 const columns = [
   { id: "no", label: "No", minWidth: 10 },
@@ -37,25 +40,15 @@ const columns = [
   },
 ];
 
-function createData(no, code, nama, detail, action) {
-  return { no, code, nama, detail, action };
+function createData(no, name, email, role, action) {
+  return { no, name, email, role, action };
 }
 
-const rows = [
-  createData(
-    1,
-    "IN",
-    1324171354,
-    3287263,
-    <div className="flex items-center justify-center gap-5">
-      <EditIcon /> <DeleteIcon />
-    </div>
-  ),
-];
-
-export default function TableApoteker() {
+export default function TableAkunSuper() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [users, setUsers] = React.useState([]);
+  const dispatch = useDispatch();
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -65,6 +58,21 @@ export default function TableApoteker() {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+  React.useEffect(() => {
+    dispatch(getMe());
+  }, [dispatch]);
+
+  React.useEffect(() => {
+    axios
+      .get("http://localhost:5000/users")
+      .then((res) => {
+        console.info(res.data);
+        setUsers(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
 
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
@@ -84,11 +92,22 @@ export default function TableApoteker() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows
+            {users
+              .map((item, index) =>
+                createData(
+                  index + 1,
+                  item.name,
+                  item.email,
+                  item.role,
+                  <div className="flex items-center justify-center gap-5">
+                    <EditIcon /> <DeleteIcon />
+                  </div>
+                )
+              )
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row) => {
+              .map((row, index) => {
                 return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+                  <TableRow hover role="checkbox" tabIndex={-1} key={index}>
                     {columns.map((column) => {
                       const value = row[column.id];
                       return (
@@ -108,7 +127,7 @@ export default function TableApoteker() {
       <TablePagination
         rowsPerPageOptions={[10, 25, 100]}
         component="div"
-        count={rows.length}
+        count={users.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}
