@@ -6,7 +6,7 @@ import MedicationLiquidIcon from "@mui/icons-material/MedicationLiquid";
 import TroubleshootIcon from "@mui/icons-material/Troubleshoot";
 import { Link, NavLink } from "react-router-dom";
 import { Switches } from "../atoms";
-import { useSelector } from "react-redux";
+import { useGetUserData } from "../../hooks";
 
 const UserNavbar = () => {
   const [nav, setNav] = useState(false);
@@ -14,6 +14,7 @@ const UserNavbar = () => {
   const [bgNav, setBgNav] = React.useState(false);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
 
+  const userData = useGetUserData();
   const navMenu = [
     {
       menuList: "Beranda",
@@ -49,10 +50,6 @@ const UserNavbar = () => {
     } else {
       setBgNav(false);
     }
-  });
-
-  const userData = useSelector((state) => {
-    return state?.auth?.user?.role;
   });
 
   useEffect(() => {

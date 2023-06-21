@@ -3,11 +3,49 @@ import { Button, Input } from "../atoms";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { login } from "../../features/authSlice";
+import { LoginUser } from "../../features/auth/authSlice";
+import Swal from "sweetalert2";
+import useGetUserData from "../../hooks/useGetUserData";
 
 const Form = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const userData = useGetUserData();
+
+  // React.useEffect(() => {
+  //   console.info(userData + " adalah user yang login");
+
+  //   if (userData === "apoteker") {
+  //     navigate("/apoteker");
+  //     window.location.reload();
+  //   } else if (userData === "admin") {
+  //     navigate("/superAdmin");
+  //     window.location.reload();
+  //   }
+  // }, []);
+
+  // redirect saat sudah login
+  React.useEffect(() => {
+    if (userData === "apoteker") {
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Login Berhasil",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      navigate("/apoteker");
+    } else if (userData === "admin") {
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Login Berhasil",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      navigate("/superadmin");
+    }
+  }, [userData, navigate]);
 
   const {
     register,
@@ -17,7 +55,8 @@ const Form = () => {
   } = useForm();
   const onSubmit = async (data) => {
     try {
-      await dispatch(login(data));
+      await dispatch(LoginUser(data));
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }
@@ -47,7 +86,7 @@ const Form = () => {
         <Button
           type="submit"
           style="bg-primary hover:bg-primary/60 text-white"
-          content="Login"
+          content={"Login"}
         />
         <div className="flex items-center justify-between">
           <span className="flex-1 h-1">

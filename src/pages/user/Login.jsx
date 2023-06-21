@@ -1,9 +1,7 @@
 import * as React from "react";
-import { Form, Switches } from "../../components";
+import { FormLogin, Switches } from "../../components";
 import { TypeAnimation } from "react-type-animation";
 import { Link } from "react-router-dom";
-import axios from "axios";
-import { useEffect } from "react";
 
 const Login = () => {
   return (
@@ -28,16 +26,7 @@ const Login = () => {
             </p>
           </div>
           <div className="w-full">
-            <Form />
-            <Link to="/login" className="max-w-xs mt-4 text-sm underline">
-              Login Form
-            </Link>
-            <Link to="/apoteker" className="max-w-xs mt-4 text-sm underline">
-              Login Apoteker
-            </Link>
-            <Link to="/superadmin" className="max-w-xs mt-4 text-sm underline">
-              Login SuperAdmin
-            </Link>
+            <FormLogin />
           </div>
         </div>
       </div>

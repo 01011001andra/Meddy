@@ -1,9 +1,26 @@
+import axios from "axios";
 import React from "react";
 import { useParams } from "react-router-dom";
 import { styles } from "../../utils/mainStyle";
+import moment from "moment";
+import "moment/locale/id";
 
 const UserDetailBerita = () => {
   const { id } = useParams();
+  const [news, setNews] = React.useState({});
+  console.info(id);
+
+  React.useEffect(() => {
+    axios
+      .get(`http://localhost:5000/beritas/${id}`)
+      .then((res) => {
+        setNews(res.data);
+        console.info(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
   return (
     <div className="min-h-screen pt-24 bg-cover dark:bg-slate-900 bg-primary">
       <div
@@ -14,81 +31,27 @@ const UserDetailBerita = () => {
           Detail Berita
         </h1>
       </div>
-      <div className="w-full min-h-screen bg-secondary dark:bg-slate-800 px-4 2xl:px-0">
-        <div className="flex flex-col gap-5 w-full min-h-screen py-6 mx-auto  max-w-7xl">
-          <div className="w-full flex items-center gap-3 flex-col max-w-xl pt-6 mx-auto">
-            <h1 className="text-center text-primary text-2xl font-bold tracking-wider">
-              Methylprednisolone : Dosis, Manfaat, Efek dan Cara Kerja Obat
-              Immunosupresan
+      <div className="w-full min-h-screen px-4 bg-secondary dark:bg-slate-800 2xl:px-0">
+        <div className="flex flex-col w-full min-h-screen gap-5 py-6 mx-auto max-w-7xl">
+          <div className="flex flex-col items-center w-full max-w-xl gap-3 pt-6 mx-auto">
+            <h1 className="text-2xl font-bold tracking-wider text-center text-primary">
+              {news.judul}
             </h1>
-            <h2 className="text-center text-zinc-600 text-xl">
-              Sayuti Melik -{" "}
+            <h2 className="text-xl text-center text-zinc-600">
               <span className="text-primary">Medicine Teddy</span>
             </h2>
-            <small className="text-center text-zinc-500 ">
-              Kamis, 25 Mei 2023 12:00 WIB
+            <small className="text-sm text-center text-zinc-500">
+              {moment
+                .utc(news.createdAt)
+                .locale("id")
+                .format("dddd, D MMMM YYYY HH:mm")}
             </small>
           </div>
-          <div className="flex flex-col gap-2">
-            <div className="flex xl:flex-row flex-col gap-8 justify-center ">
-              <img src="../beritaobat.png" className="h-auto max-w-10" />
-              <div className="flex-col justify-center">
-                <p className="text-justify text-sm tracking-wide ">
-                  Batam - Methylprednisolone adalah jenis obat golongan steroid
-                  yang bisa digunakan sebagai obat beberapa jenis penyakit
-                  seperti alergi dan radang. Obat yang sudah terdaftar dalam
-                  BPOM RI ini mampu menekan kekebalan tubuh (immunosupresan).
-                  Aksi batuk diawali dengan sistem saraf yang mengirim pesan ke
-                  batang otak lalu direspon. Hasilnya, otot-otot di dada dan
-                  perut akan beraksi yang mengakibatkan keluarnya batuk. Batuk
-                  bisa sangat mengganggu aktivitas sehari-hari hingga pasiennya
-                  ingin segera sembuh. Batam - Methylprednisolone adalah jenis
-                  obat golongan steroid yang bisa digunakan sebagai obat
-                  beberapa jenis penyakit seperti alergi dan radang. Obat yang
-                  sudah terdaftar dalam BPOM RI ini mampu menekan kekebalan
-                  tubuh (immunosupresan). Aksi batuk diawali dengan sistem saraf
-                  yang mengirim pesan ke batang otak lalu direspon. Hasilnya,
-                  otot-otot di dada dan perut akan beraksi yang mengakibatkan
-                  keluarnya batuk. Batuk bisa sangat mengganggu aktivitas
-                  sehari-hari hingga pasiennya ingin segera sembuh. Batam -
-                  Methylprednisolone adalah jenis obat golongan steroid yang
-                  bisa digunakan sebagai obat beberapa jenis penyakit seperti
-                  alergi dan radang. Obat yang sudah terdaftar dalam BPOM RI ini
-                  mampu menekan kekebalan tubuh (immunosupresan). Aksi batuk
-                  diawali dengan sistem saraf yang mengirim pesan ke batang otak
-                  lalu direspon. Hasilnya, otot-otot di dada dan perut akan
-                  beraksi yang mengakibatkan keluarnya batuk. Batuk bisa sangat
-                  mengganggu aktivitas sehari-hari hingga pasiennya ingin segera
-                  sembuh.
-                </p>
-              </div>
+          <div className="flex flex-col gap-8">
+            <div className="flex flex-col justify-center gap-8 xl:flex-row ">
+              <img src={`../${news.gambar}`} className="h-96 max-w-10" />
             </div>
-            <p className="text-justify text-sm tracking-wide ">
-              Batam - Methylprednisolone adalah jenis obat golongan steroid yang
-              bisa digunakan sebagai obat beberapa jenis penyakit seperti alergi
-              dan radang. Obat yang sudah terdaftar dalam BPOM RI ini mampu
-              menekan kekebalan tubuh (immunosupresan). Aksi batuk diawali
-              dengan sistem saraf yang mengirim pesan ke batang otak lalu
-              direspon. Hasilnya, otot-otot di dada dan perut akan beraksi yang
-              mengakibatkan keluarnya batuk. Batuk bisa sangat mengganggu
-              aktivitas sehari-hari hingga pasiennya ingin segera sembuh. Batam
-              - Methylprednisolone adalah jenis obat golongan steroid yang bisa
-              digunakan sebagai obat beberapa jenis penyakit seperti alergi dan
-              radang. Obat yang sudah terdaftar dalam BPOM RI ini mampu menekan
-              kekebalan tubuh (immunosupresan). Aksi batuk diawali dengan sistem
-              saraf yang mengirim pesan ke batang otak lalu direspon. Hasilnya,
-              otot-otot di dada dan perut akan beraksi yang mengakibatkan
-              keluarnya batuk. Batuk bisa sangat mengganggu aktivitas
-              sehari-hari hingga pasiennya ingin segera sembuh. Batam -
-              Methylprednisolone adalah jenis obat golongan steroid yang bisa
-              digunakan sebagai obat beberapa jenis penyakit seperti alergi dan
-              radang. Obat yang sudah terdaftar dalam BPOM RI ini mampu menekan
-              kekebalan tubuh (immunosupresan). Aksi batuk diawali dengan sistem
-              saraf yang mengirim pesan ke batang otak lalu direspon. Hasilnya,
-              otot-otot di dada dan perut akan beraksi yang mengakibatkan
-              keluarnya batuk. Batuk bisa sangat mengganggu aktivitas
-              sehari-hari hingga pasiennya ingin segera sembuh.
-            </p>
+            <p className="text-sm tracking-wide text-justify ">{news.title}</p>
           </div>
         </div>
       </div>

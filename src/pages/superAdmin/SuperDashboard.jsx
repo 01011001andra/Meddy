@@ -5,20 +5,13 @@ import { useNavigate } from "react-router-dom";
 import { ApotekerDashboardCard } from "../../components/molecules";
 import { getMe } from "../../features/auth/authSlice";
 
-const Dashboard = () => {
+const SuperDashboard = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const { isError } = useSelector((state) => state.auth);
 
   React.useEffect(() => {
     dispatch(getMe());
   }, [dispatch]);
-  React.useEffect(() => {
-    if (isError) {
-      navigate("/login");
-    }
-  }, [isError, navigate]);
 
   React.useEffect(() => {
     axios
@@ -50,12 +43,25 @@ const Dashboard = () => {
       </div>
       <h1 className="text-3xl font-bold">Section</h1>
       <div className="flex flex-wrap w-full gap-5">
-        <ApotekerDashboardCard amount="Berita" url="AdminObat.png" />
-        <ApotekerDashboardCard amount="Obat" url="AdminBerita.png" />
-        <div className="pb-20"></div>
+        <ApotekerDashboardCard
+          amount="Tambah Obat"
+          url="AdminBerita.png"
+          link={"/superadmin/tambahobat"}
+        />
+        <ApotekerDashboardCard
+          amount="Tambah Berita"
+          url="AdminObat.png"
+          link={"/superadmin/tambahblog"}
+        />
+        <ApotekerDashboardCard
+          amount="Kelola Akun"
+          url="AdminBerita.png"
+          link={"/superadmin/kelola"}
+        />
       </div>
+      <div className="pb-20"></div>
     </div>
   );
 };
 
-export default Dashboard;
+export default SuperDashboard;

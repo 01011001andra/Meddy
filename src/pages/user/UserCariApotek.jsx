@@ -12,15 +12,16 @@ const UserCariApotek = () => {
   return (
     <div className="min-h-screen dark:bg-slate-900 bg-primary">
       <div
-        className="relative flex flex-col items-center justify-center min-h-screen bg-primary dark:bg-slate-900"
+        className="relative flex flex-col items-center justify-center min-h-screen px-4 pt-20 bg-primary dark:bg-slate-900"
         style={{ backgroundImage: "url('../loginPattern.png')" }}
       >
-        <div className="flex flex-col-reverse items-center justify-center gap-8 pb-10 mx-16 md:flex-row">
+        <div className="flex flex-col-reverse items-center justify-center w-full gap-8 pb-10 mx-16 max-w-7xl md:flex-row">
           <div className={`${styles.sectionSubText} tracking-wider`}>
             <h1 className="text-5xl font-bold text-white">HI !</h1>
             <p className="py-5 text-xl text-white">
-              Temukan Apotik yang kamu tuju di aplikasi meddy. Silahkan download
-              sekarang !
+              Temukan fitur-fitur menarik lainnya seperti tracking apoteker dan
+              konsultasi dengan apoteker di aplikasi meddy. Silahkan download
+              sekarang!
             </p>
             <img
               src="./playstore.png"

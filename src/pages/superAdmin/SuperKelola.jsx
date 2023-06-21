@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Search, TableApoteker } from "../../components";
+import TableAkunSuper from "../../components/molecules/TabelAkunSuper";
 
 const Kelola = () => {
   return (
@@ -11,13 +12,13 @@ const Kelola = () => {
         <Search />
 
         <Link
-          to="/kelola"
+          to="/superadmin/tambahuser"
           className="px-10 py-4 font-bold text-center text-black bg-white rounded-full shadow-xl dark:text-black hover:bg-secondary/60"
         >
           Tambah Apoteker
         </Link>
       </div>
-      <TableApoteker />
+      <TableAkunSuper />
     </div>
   );
 };

@@ -20,6 +20,7 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import { Link, Outlet } from "react-router-dom";
 import { Avatar } from "@mui/material";
+import { useDispatch } from "react-redux";
 
 const drawerWidth = 240;
 
@@ -106,11 +107,15 @@ const sideBarMenu = [
 export default function ApotekerMainLayout() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const dispatch = useDispatch();
 
   const handleDrawer = () => {
     setOpen(!open);
   };
-
+  function handleDelete() {
+    localStorage.removeItem("users");
+    dispatch(LogOut());
+  }
   return (
     <Box sx={{ display: "flex", backgroundColor: "#f5f5f5", height: "100vh" }}>
       <CssBaseline />
@@ -184,7 +189,7 @@ export default function ApotekerMainLayout() {
               menuLink: "/",
             },
           ].map((text, index) => (
-            <Link to={text.menuLink}>
+            <Link key={text.menuName} to={text.menuLink} onClick={handleDelete}>
               <ListItem
                 key={text.menuName}
                 disablePadding

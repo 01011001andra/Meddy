@@ -15,43 +15,61 @@ import {
   UserDetailObat,
   SuperMainLayout,
   Kelola,
+  SuperDashboard,
+  TambahUser,
 } from "./pages";
 import Swal from "sweetalert2";
 import Login from "./pages/user/Login";
 
 const App = () => {
-  const [apoteker, setApoteker] = React.useState(null);
-  const [superAdmin, setSuperAdmin] = React.useState(null);
   const navigate = useNavigate();
+  const [userData, setUserData] = React.useState([]);
 
-  const userData = useSelector((state) => {
-    return state?.auth?.user?.role;
-  });
+  // // const userData = useSelector((state) => {
+  // //   return state?.auth?.user?.name;
+  // // });
 
+  // React.useEffect(() => {
+  //   if (userData?.name === "apoteker") {
+  //     navigate("/apoteker");
+
+  //     Swal.fire({
+  //       position: "top-end",
+  //       icon: "success",
+  //       title: "Login Berhasil",
+  //       showConfirmButton: false,
+  //       timer: 1500,
+  //     });
+  //     // setApoteker(true);
+  //   } else if (userData?.name === "admin") {
+  //     navigate("/superAdmin");
+  //   }
+
+  //   console.info(userData?.name);
+  // }, [userData]);
 
   React.useEffect(() => {
-    if (userData === "apoteker") {
-      navigate("/apoteker");
-      setApoteker(true);
+    const localData = JSON.parse(localStorage.getItem("users"));
+    const user = localData?.users?.name;
+    setUserData(user);
+  }, []);
 
-      Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: "Login Berhasil",
-        showConfirmButton: false,
-        timer: 1500,
-      });
-      // setApoteker(true);
-    } else if (userData === "admin") {
-      navigate("/superAdmin");
-      // setSuperAdmin(true);
-    }
-    setSuperAdmin(true);
+  // React.useEffect(() => {
+  //   if (userData === "apoteker") {
+  //     navigate("/apoteker");
+  //     Swal.fire({
+  //       position: "top-end",
+  //       icon: "success",
+  //       title: "Login Berhasil",
+  //       showConfirmButton: false,
+  //       timer: 1500,
+  //     });
+  //   } else if (userData === "admin") {
+  //     navigate("/superadmin");
+  //   }
+  // }, [userData, navigate]);
 
-    console.info(userData);
-  }, [userData]);
-
-  if (apoteker) {
+  if (userData === "apoteker") {
     return (
       <div className="relative">
         <Routes>
@@ -68,14 +86,14 @@ const App = () => {
             <Route path="tambahObat" element={<TambahObat />} />
             <Route path="tambahBlog" element={<TambahBlog />} />
           </Route>
-          <Route path="/login" element={<h1>Not Found</h1>} />
+          <Route path="/login" element={<Login />} />
           <Route path="*" element={<h1>Not Found</h1>} />
         </Routes>
       </div>
     );
   }
 
-  if (superAdmin) {
+  if (userData === "admin") {
     return (
       <div className="relative">
         <Routes>
@@ -88,10 +106,11 @@ const App = () => {
             <Route path="cari" element={<UserCariApotek />} />
           </Route>
           <Route path="/superadmin" element={<SuperMainLayout />}>
-            <Route index element={<Dashboard />} />
+            <Route index element={<SuperDashboard />} />
             <Route path="tambahObat" element={<TambahObat />} />
             <Route path="tambahBlog" element={<TambahBlog />} />
             <Route path="kelola" element={<Kelola />} />
+            <Route path="tambahuser" element={<TambahUser />} />
           </Route>
           <Route path="/login" element={<Login />} />
           <Route path="*" element={<h1>Not Found</h1>} />
