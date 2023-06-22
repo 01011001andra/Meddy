@@ -5,7 +5,6 @@ import UserObat from "./UserObat";
 import UserCariApotek from "./UserCariApotek";
 import MainLayout from "./MainLayout";
 import UserDetailObat from "./UserDetailObat";
-
 import UserDetailBerita from "./UserDetailBerita";
 
 export {

@@ -18,19 +18,17 @@ import { Link } from "react-router-dom";
 
 const columns = [
   { id: "no", label: "No", minWidth: 10 },
-  { id: "name", label: "Name", minWidth: 10 },
+  { id: "judul", label: "Judul", minWidth: 10 },
   {
-    id: "email",
-    label: "Email",
+    id: "gambar",
+    label: "Gambar",
     minWidth: 10,
-    align: "right",
     format: (value) => value.toLocaleString("en-US"),
   },
   {
-    id: "role",
-    label: "Role",
+    id: "title",
+    label: "Deskripsi",
     minWidth: 10,
-    align: "right",
     format: (value) => value.toLocaleString("en-US"),
   },
   {
@@ -42,14 +40,14 @@ const columns = [
   },
 ];
 
-function createData(no, name, email, role, action) {
-  return { no, name, email, role, action };
+function createData(no, judul, gambar, title, action) {
+  return { no, judul, gambar, title, action };
 }
 
-export default function TableAkunSuper() {
+export default function TabelBeritaSuper() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  const [users, setUsers] = React.useState([]);
+  const [berita, setBerita] = React.useState([]);
   const dispatch = useDispatch();
 
   const handleChangePage = (event, newPage) => {
@@ -66,10 +64,10 @@ export default function TableAkunSuper() {
 
   const getData = () => {
     axios
-      .get("http://localhost:5000/users")
+      .get("http://localhost:5000/berita")
       .then((res) => {
         console.info(res.data);
-        setUsers(res.data);
+        setBerita(res.data);
       })
       .catch((err) => {
         console.error(err);
@@ -82,7 +80,7 @@ export default function TableAkunSuper() {
   const handleDelete = (item) => {
     Swal.fire({
       title: "Kamu yakin?",
-      text: `Kamu akan menghapus ${item.name}`,
+      text: `Kamu akan menghapus ${item.judul}`,
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -91,7 +89,7 @@ export default function TableAkunSuper() {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:5000/users/${item.uuid}`)
+          .delete(`http://localhost:5000/berita/${item.uuid}`)
           .then((res) => {
             console.info(res.data);
             getData();
@@ -121,15 +119,15 @@ export default function TableAkunSuper() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {users
+            {berita
               .map((item, index) =>
                 createData(
                   index + 1,
-                  item.name,
-                  item.email,
-                  item.role,
+                  item.judul,
+                  item.gambar,
+                  item.title,
                   <div className="flex items-center justify-center gap-5">
-                    <Link to={`/admin/${item.uuid}`}>
+                    <Link to={`/admin/tambahblog/${item.uuid}`}>
                       <EditIcon />
                     </Link>{" "}
                     <DeleteIcon
@@ -164,7 +162,7 @@ export default function TableAkunSuper() {
       <TablePagination
         rowsPerPageOptions={[10, 25, 100]}
         component="div"
-        count={users.length}
+        count={berita.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}

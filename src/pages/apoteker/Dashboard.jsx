@@ -50,8 +50,16 @@ const Dashboard = () => {
       </div>
       <h1 className="text-3xl font-bold">Section</h1>
       <div className="flex flex-wrap w-full gap-5">
-        <ApotekerDashboardCard amount="Berita" url="AdminObat.png" />
-        <ApotekerDashboardCard amount="Obat" url="AdminBerita.png" />
+        <ApotekerDashboardCard
+          amount="Berita"
+          url="AdminObat.png"
+          link={"/admin/tambahblog"}
+        />
+        <ApotekerDashboardCard
+          amount="Obat"
+          url="AdminBerita.png"
+          link={"/admin/tambahobat"}
+        />
         <div className="pb-20"></div>
       </div>
     </div>
