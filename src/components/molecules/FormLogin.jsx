@@ -34,7 +34,7 @@ const Form = () => {
         showConfirmButton: false,
         timer: 1500,
       });
-      navigate("/apoteker");
+      navigate("/admin");
     } else if (userData === "admin") {
       Swal.fire({
         position: "top-end",
@@ -43,7 +43,7 @@ const Form = () => {
         showConfirmButton: false,
         timer: 1500,
       });
-      navigate("/superadmin");
+      navigate("/admin");
     }
   }, [userData, navigate]);
 

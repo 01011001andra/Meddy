@@ -46,17 +46,17 @@ const SuperDashboard = () => {
         <ApotekerDashboardCard
           amount="Tambah Obat"
           url="AdminBerita.png"
-          link={"/superadmin/tambahobat"}
+          link={"/admin/tambahobat"}
         />
         <ApotekerDashboardCard
           amount="Tambah Berita"
           url="AdminObat.png"
-          link={"/superadmin/tambahblog"}
+          link={"/admin/tambahblog"}
         />
         <ApotekerDashboardCard
           amount="Kelola Akun"
           url="AdminBerita.png"
-          link={"/superadmin/kelola"}
+          link={"/admin/kelola"}
         />
       </div>
       <div className="pb-20"></div>

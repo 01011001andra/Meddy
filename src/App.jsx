@@ -17,9 +17,15 @@ import {
   Kelola,
   SuperDashboard,
   TambahUser,
+  UpdateUser,
+  SuperObat,
+  UpdateObatSuper,
+  Login,
+  TambahObatSuper,
+  SuperBerita,
+  TambahBeritaSuper,
+  UpdateBeritaSuper,
 } from "./pages";
-import Swal from "sweetalert2";
-import Login from "./pages/user/Login";
 
 const App = () => {
   const navigate = useNavigate();
@@ -81,10 +87,14 @@ const App = () => {
             <Route path="info/:id" element={<UserDetailObat />} />
             <Route path="/cari" element={<UserCariApotek />} />
           </Route>
-          <Route path="/apoteker" element={<ApotekerMainLayout />}>
+          <Route path="/admin" element={<ApotekerMainLayout />}>
             <Route index element={<Dashboard />} />
-            <Route path="tambahObat" element={<TambahObat />} />
-            <Route path="tambahBlog" element={<TambahBlog />} />
+            <Route path="tambahObat" element={<SuperObat />} />
+            <Route path="tambahObat/:id" element={<UpdateObatSuper />} />
+            <Route path="tambahDataObat" element={<TambahObatSuper />} />
+            <Route path="tambahBlog" element={<SuperBerita />} />
+            <Route path="tambahDataBlog" element={<TambahBeritaSuper />} />
+            <Route path="tambahblog/:id" element={<UpdateBeritaSuper />} />
           </Route>
           <Route path="/login" element={<Login />} />
           <Route path="*" element={<h1>Not Found</h1>} />
@@ -105,12 +115,17 @@ const App = () => {
             <Route path="info/:id" element={<UserDetailObat />} />
             <Route path="cari" element={<UserCariApotek />} />
           </Route>
-          <Route path="/superadmin" element={<SuperMainLayout />}>
+          <Route path="/admin" element={<SuperMainLayout />}>
             <Route index element={<SuperDashboard />} />
-            <Route path="tambahObat" element={<TambahObat />} />
-            <Route path="tambahBlog" element={<TambahBlog />} />
+            <Route path="tambahObat" element={<SuperObat />} />
+            <Route path="tambahObat/:id" element={<UpdateObatSuper />} />
+            <Route path="tambahDataObat" element={<TambahObatSuper />} />
+            <Route path="tambahBlog" element={<SuperBerita />} />
+            <Route path="tambahDataBlog" element={<TambahBeritaSuper />} />
+            <Route path="tambahblog/:id" element={<UpdateBeritaSuper />} />
             <Route path="kelola" element={<Kelola />} />
             <Route path="tambahuser" element={<TambahUser />} />
+            <Route path=":id" element={<UpdateUser />} />
           </Route>
           <Route path="/login" element={<Login />} />
           <Route path="*" element={<h1>Not Found</h1>} />

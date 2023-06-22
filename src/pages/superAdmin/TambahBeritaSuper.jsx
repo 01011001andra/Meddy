@@ -1,25 +1,27 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { TextField, Select, MenuItem, Button } from "@mui/material";
+import { TextField, Button } from "@mui/material";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
-const TambahUser = () => {
+const TambahBeritaSuper = () => {
   const { register, handleSubmit, reset } = useForm();
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    axios
-      .post("http://localhost:5000/users", {
-        id: data.id,
-        name: data.name,
-        email: data.email,
-        password: data.password,
-        confPassword: data.password,
-        role: "apoteker",
-      })
+    console.log(data);
+    const formData = new FormData();
+    formData.append("judul", data.judul);
+    formData.append("gambar", data.gambar[0]);
+    formData.append("title", data.title);
 
+    axios
+      .post("http://localhost:5000/berita", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
       .then((res) => {
         console.info("Berhasil dibuat");
         Swal.fire({
@@ -29,7 +31,7 @@ const TambahUser = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        navigate("/admin/kelola");
+        navigate("/admin/tambahblog");
       })
       .catch((err) => {
         console.error(err);
@@ -38,36 +40,29 @@ const TambahUser = () => {
 
   return (
     <div>
-      <h1 className="text-3xl font-medium md:text-4xl">Tambah Akun</h1>
+      <h1 className="text-3xl font-medium md:text-4xl">Tambah Data Berita</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <TextField
-          label="Name"
+          label="Judul"
           type="text"
-          {...register("name", { required: true })}
+          {...register("judul", { required: true })}
           fullWidth
           margin="normal"
         />
         <TextField
-          label="Email"
-          type="email"
-          {...register("email", { required: true })}
+          type="file"
+          {...register("gambar", { required: true })}
           fullWidth
           margin="normal"
         />
         <TextField
-          label="Password"
-          type="password"
-          {...register("password", { required: true })}
+          label="Deskripsi"
+          type="text"
+          {...register("title", { required: true })}
           fullWidth
           margin="normal"
         />
-        <TextField
-          label="No Hp"
-          type="number"
-          {...register("id", { required: true })}
-          fullWidth
-          margin="normal"
-        />
+
         <Button type="submit" variant="contained" color="primary">
           Submit
         </Button>
@@ -76,4 +71,4 @@ const TambahUser = () => {
   );
 };
 
-export default TambahUser;
+export default TambahBeritaSuper;

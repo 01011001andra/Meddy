@@ -10,6 +10,7 @@ import TableApoteker from "./TableApoteker";
 import BeritaCard from "./BeritaCard";
 import BoxObat from "./BoxObat";
 import TableSuper from "./TabelAkunSuper";
+import TabelObatSuper from "./TabelObatSuper";
 
 export {
   BeritaCard,
@@ -24,4 +25,5 @@ export {
   TableApoteker,
   BoxObat,
   TableSuper,
+  TabelObatSuper,
 };

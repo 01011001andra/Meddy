@@ -95,19 +95,19 @@ const Drawer = styled(MuiDrawer, {
 const sideBarMenu = [
   {
     menuName: "Dashboard",
-    menuLink: "/superadmin",
+    menuLink: "/admin",
   },
   {
     menuName: "Tambah Obat",
-    menuLink: "/superadmin/tambahobat",
+    menuLink: "/admin/tambahobat",
   },
   {
     menuName: "Tambah Blog",
-    menuLink: "/superadmin/tambahblog",
+    menuLink: "/admin/tambahblog",
   },
   {
     menuName: "Kelola Akun",
-    menuLink: "/superadmin/kelola",
+    menuLink: "/admin/kelola",
   },
 ];
 
