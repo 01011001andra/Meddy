@@ -3,13 +3,13 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { Button, Carousel, CarouselBerita } from "../../components";
 import { styles } from "../../utils/mainStyle";
 import { Link } from "react-router-dom";
+import { Link as Scrolls } from "react-scroll";
 import { useScrollToTop } from "../../hooks";
-
 import AOS from "aos";
 
 const UserHome = () => {
   useScrollToTop();
-
+  console.log(import.meta.env.VITE_SOME_KEY);
   React.useEffect(() => {
     AOS.init();
   }, []);
@@ -39,7 +39,7 @@ const UserHome = () => {
             alt="hero"
           />
           <h1 className="absolute text-2xl font-extrabold text-center text-white md:text-5xl top-10 md:top-14 ">
-            Meddycine <br />
+            Medicine <br />
             Teddy
           </h1>
           <p className="absolute max-w-xs text-sm text-center text-white md:max-w-lg md:text-lg">
@@ -47,19 +47,28 @@ const UserHome = () => {
             dan efisien serta memantau dan mengelola konsumsi obat dengan baik.
           </p>
           <div className="absolute flex gap-10 bottom-16">
-            <Button
-              content={"Tentang"}
-              style="bg-white px-5 text-primary dark:text-primary dark:hover:text-white md:px-12 shadow-2xl hover:bg-primary hover:text-white"
-            />
-            <Button
-              content={"Unduh"}
-              style="bg-white px-5 text-primary dark:text-primary dark:hover:text-white md:px-12 shadow-2xl hover:bg-primary hover:text-white"
-            />
+            <Scrolls
+              to="test1"
+              spy={true}
+              smooth={true}
+              offset={50}
+              duration={500}
+              className="px-5 py-2 text-lg transition-all duration-300 bg-white rounded-full shadow-2xl cursor-pointer text-primary dark:text-primary dark:hover:text-white md:px-12 hover:bg-primary hover:text-white md:py-3"
+            >
+              Mulai
+            </Scrolls>
+            <Link
+              target="_blank"
+              to="https://play.google.com/store/apps/details?id=com.dts.freefireth&hl=en-ID"
+              className="px-5 py-2 text-lg transition-all duration-300 bg-white rounded-full shadow-2xl cursor-pointer text-primary dark:text-primary dark:hover:text-white md:px-12 hover:bg-primary hover:text-white md:py-3"
+            >
+              Unduh
+            </Link>
           </div>
         </div>
       </div>
       {/* Section 2 */}
-      <div className="w-full h-full bg-secondary dark:bg-slate-900">
+      <div className="w-full h-full bg-secondary dark:bg-slate-900" id="test1">
         <div className="flex flex-col-reverse items-center justify-center w-full h-full min-h-screen gap-12 mx-auto max-w-7xl md:flex-row py-7">
           <div
             data-aos="fade-right"
@@ -100,20 +109,7 @@ const UserHome = () => {
                 mengkonsumsi obat
               </p>
             </div>
-            <Carousel
-              slide1="Procold Flu"
-              slide2="Procold Flu"
-              slide3="Procold Flu"
-              slide4="Procold Flu"
-              slide5="Procold Flu"
-              slide6="Procold Flu"
-              content1="6 Kaplet Procold Flu"
-              content2="6 Kaplet Procold Flu"
-              content3="6 Kaplet Procold Flu"
-              content4="6 Kaplet Procold Flu"
-              content5="6 Kaplet Procold Flu"
-              content6="6 Kaplet Procold Flu"
-            />
+            <Carousel />
           </>
           <div className="flex justify-center w-full gap-2 md:justify-end">
             <Link
@@ -135,23 +131,10 @@ const UserHome = () => {
                 bahaya, yuk simak di bawah ini!
               </p>
             </div>
-            <CarouselBerita
-              slide1="Procold Flu"
-              slide2="Procold Flu"
-              slide3="Procold Flu"
-              slide4="Procold Flu"
-              slide5="Procold Flu"
-              slide6="Procold Flu"
-              content1="6 Kaplet Procold Flu"
-              content2="6 Kaplet Procold Flu"
-              content3="6 Kaplet Procold Flu"
-              content4="6 Kaplet Procold Flu"
-              content5="6 Kaplet Procold Flu"
-              content6="6 Kaplet Procold Flu"
-            />
+            <CarouselBerita />
             <div className="flex justify-center w-full gap-2 md:justify-end">
               <Link
-                to="/artikel"
+                to="/berita"
                 className="text-xl font-bold text-primary hover:text-primary/60"
               >
                 Selengkapnya <ArrowForwardIcon />

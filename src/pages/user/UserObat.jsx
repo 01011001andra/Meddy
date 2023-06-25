@@ -32,20 +32,7 @@ const UserObat = () => {
       <div className="w-full min-h-screen px-12 bg-secondary dark:bg-slate-800">
         <div className="flex flex-col justify-center gap-8 mx-auto max-w-7xl">
           <div className="flex flex-col items-center justify-center gap-5 px-12 md:items-start">
-            <Select
-              sx={{
-                marginTop: 5,
-                width: 250,
-                height: 50,
-              }}
-            >
-              <MenuItem value={1}>Red</MenuItem>
-              <MenuItem value={2}>Black</MenuItem>
-              <MenuItem value={3}>Blue</MenuItem>
-              <MenuItem value={4}>Green</MenuItem>
-              <MenuItem value={5}>Yellow</MenuItem>
-            </Select>
-            <h1 className="text-2xl font-semibold tracking-wide text-center md:text-start">
+            <h1 className="mt-8 text-2xl font-semibold tracking-wide text-center md:text-start">
               Obat
             </h1>
             <div className="flex flex-wrap justify-center gap-5 pb-10 md:gap-6 xl:justify-start">

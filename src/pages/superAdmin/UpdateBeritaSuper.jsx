@@ -16,7 +16,7 @@ const UpdateBeritaSuper = () => {
       .then((res) => {
         console.info(res.data);
         // Mengisi nilai default input field menggunakan setValue
-        setValue("name", res.data.judul);
+        setValue("judul", res.data.judul);
         setValue("title", res.data.title);
       })
       .catch((err) => {
@@ -52,11 +52,11 @@ const UpdateBeritaSuper = () => {
     <div>
       <h1 className="mb-8 text-3xl font-medium md:text-4xl">Update Obat</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <InputLabel htmlFor="name">Name</InputLabel>
+        <InputLabel htmlFor="judul">Name</InputLabel>
         <TextField
-          id="name"
+          id="judul"
           type="text"
-          {...register("name", { required: true })}
+          {...register("judul", { required: true })}
           fullWidth
           margin="normal"
           defaultValue=""

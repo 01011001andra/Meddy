@@ -88,11 +88,16 @@ const TambahObatSuper = () => {
           margin="normal"
         />
         <TextField
-          label="Deskripsi"
+          id="deskripsi"
+          variant="outlined"
+          multiline
+          minRows={3}
+          size="small"
           type="text"
           {...register("deskripsi", { required: true })}
           fullWidth
           margin="normal"
+          defaultValue=""
         />
         <Button type="submit" variant="contained" color="primary">
           Submit

@@ -56,7 +56,7 @@ const App = () => {
 
   React.useEffect(() => {
     const localData = JSON.parse(localStorage.getItem("users"));
-    const user = localData?.users?.name;
+    const user = localData?.users?.role;
     setUserData(user);
   }, []);
 

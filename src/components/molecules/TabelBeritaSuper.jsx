@@ -101,6 +101,13 @@ export default function TabelBeritaSuper() {
       }
     });
   };
+  function truncateText(text, limit) {
+    const words = text.split(" ");
+    if (words.length > limit) {
+      return words.slice(0, limit).join(" ") + "...";
+    }
+    return text;
+  }
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
       <TableContainer sx={{ maxHeight: 440 }}>
@@ -124,8 +131,12 @@ export default function TabelBeritaSuper() {
                 createData(
                   index + 1,
                   item.judul,
-                  item.gambar,
-                  item.title,
+                  <img
+                    src={`../${item.gambar}`}
+                    alt={item.gambar}
+                    className="w-52"
+                  />,
+                  truncateText(item.title, 50),
                   <div className="flex items-center justify-center gap-5">
                     <Link to={`/admin/tambahblog/${item.uuid}`}>
                       <EditIcon />
@@ -147,7 +158,9 @@ export default function TabelBeritaSuper() {
                       const value = row[column.id];
                       return (
                         <TableCell key={column.id} align={column.align}>
-                          {column.format && typeof value === "number"
+                          {column.id === "judul"
+                            ? truncateText(value, 20)
+                            : column.format && typeof value === "number"
                             ? column.format(value)
                             : value}
                         </TableCell>

@@ -47,7 +47,7 @@ const UserDetailBerita = () => {
                 .format("dddd, D MMMM YYYY HH:mm")}
             </small>
           </div>
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col w-full gap-8">
             <div className="flex flex-col justify-center gap-8 xl:flex-row ">
               <img src={`../${news.gambar}`} className="h-96 max-w-10" />
             </div>
