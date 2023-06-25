@@ -86,36 +86,49 @@ const UserFooter = () => {
           <div className="grid grid-cols-1 gap-8 lg:col-span-2 sm:grid-cols-2 lg:grid-cols-4">
             <div>
               <p className="font-medium">Menu</p>
-              <nav className="flex flex-col mt-4 space-y-2 text-sm ">
-                <Link to="/" className="hover:opacity-75"> Beranda </Link>
-                <Link to="/berita" className="hover:opacity-75"> Berita </Link>
-                <Link to="/info" className="hover:opacity-75"> Informasi Obat </Link>
-                <Link to="/cari" className="hover:opacity-75"> Temukan Apotek </Link>
-              </nav>
+              <div className="flex flex-col mt-4 space-y-2 text-sm ">
+                <Link to="/" className="hover:opacity-75">
+                  {" "}
+                  Beranda{" "}
+                </Link>
+                <Link to="/berita" className="hover:opacity-75">
+                  {" "}
+                  Berita{" "}
+                </Link>
+                <Link to="/info" className="hover:opacity-75">
+                  {" "}
+                  Informasi Obat{" "}
+                </Link>
+                <Link to="/cari" className="hover:opacity-75">
+                  {" "}
+                  Temukan Apotek{" "}
+                </Link>
+              </div>
             </div>
-            <div>
+            <div className="flex flex-col w-full gap-4">
               <p className="font-medium">Contact Us</p>
-              <nav className="flex flex-col mt-4 space-y-2 text-sm ">
-                <a className="hover:opacity-75"> 1on1 Coaching </a>
-                <a className="hover:opacity-75"> Company Review </a>
-                <a className="hover:opacity-75"> Accounts Review </a>
-                <a className="hover:opacity-75"> HR Consulting </a>
-                <a className="hover:opacity-75"> SEO Optimisation </a>
-              </nav>
+
+              <Link
+                to="https://mail.google.com/mail/u/0/#inbox"
+                target="_blank"
+              >
+                Gmail
+              </Link>
             </div>
+
             <div>
-              <p className="font-medium">Helpful Links</p>
-              <nav className="flex flex-col mt-4 space-y-2 text-sm ">
-                <a className="hover:opacity-75"> Contact </a>
-                <a className="hover:opacity-75"> FAQs </a>
-                <a className="hover:opacity-75"> Live Chat </a>
-              </nav>
+              <p className="font-medium">Resource</p>
+              <div className="flex flex-col mt-4 space-y-2 text-sm ">
+                <a className="hover:opacity-75"> Tailwindcss </a>
+                <a className="hover:opacity-75"> Reactjs </a>
+                <a className="hover:opacity-75"> Material Ui </a>
+              </div>
             </div>
             <div>
               <p className="font-medium">Download</p>
-              <nav className="flex flex-col mt-4 space-y-2 text-sm ">
+              <div className="flex flex-col mt-4 space-y-2 text-sm ">
                 <img src="../playstore.png" alt="Download" className="w-32" />
-              </nav>
+              </div>
             </div>
           </div>
         </div>
