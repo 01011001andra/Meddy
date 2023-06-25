@@ -56,11 +56,16 @@ const TambahBeritaSuper = () => {
           margin="normal"
         />
         <TextField
-          label="Deskripsi"
+          id="title"
+          variant="outlined"
+          multiline
+          minRows={3}
+          size="small"
           type="text"
           {...register("title", { required: true })}
           fullWidth
           margin="normal"
+          defaultValue=""
         />
 
         <Button type="submit" variant="contained" color="primary">

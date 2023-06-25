@@ -60,10 +60,11 @@ const UserDetailObat = () => {
               {obat.name}
             </h1>
             <h1 className="font-semibold tracking-wide font-poppins">
-              Kategori : {obat.jenis}
+              Kategori : <span className="font-medium">: {obat.jenis}</span>
             </h1>
             <h1 className="font-semibold tracking-wide font-poppins">
-              Detail Produk : {obat.deskripsi}
+              Detail Produk :{" "}
+              <span className="font-medium">: {obat.deskripsi}</span>
             </h1>
             <p className="font-semibold tracking-wide font-poppins">
               Komposisi <span className="font-medium">: {obat.komposisi}</span>

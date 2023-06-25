@@ -10,8 +10,9 @@ const TambahUser = () => {
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
+    console.log(import.meta.env.VITE_API_CREATE_USER);
     axios
-      .post("http://localhost:5000/users", {
+      .post(import.meta.env.VITE_API_CREATE_USER, {
         id: data.id,
         name: data.name,
         email: data.email,

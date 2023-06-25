@@ -85,16 +85,16 @@ const UserFooter = () => {
           </div>
           <div className="grid grid-cols-1 gap-8 lg:col-span-2 sm:grid-cols-2 lg:grid-cols-4">
             <div>
-              <p className="font-medium">Company</p>
+              <p className="font-medium">Menu</p>
               <nav className="flex flex-col mt-4 space-y-2 text-sm ">
-                <a className="hover:opacity-75"> About </a>
-                <a className="hover:opacity-75"> Meet the Team </a>
-                <a className="hover:opacity-75"> History </a>
-                <a className="hover:opacity-75"> Careers </a>
+                <Link to="/" className="hover:opacity-75"> Beranda </Link>
+                <Link to="/berita" className="hover:opacity-75"> Berita </Link>
+                <Link to="/info" className="hover:opacity-75"> Informasi Obat </Link>
+                <Link to="/cari" className="hover:opacity-75"> Temukan Apotek </Link>
               </nav>
             </div>
             <div>
-              <p className="font-medium">Services</p>
+              <p className="font-medium">Contact Us</p>
               <nav className="flex flex-col mt-4 space-y-2 text-sm ">
                 <a className="hover:opacity-75"> 1on1 Coaching </a>
                 <a className="hover:opacity-75"> Company Review </a>

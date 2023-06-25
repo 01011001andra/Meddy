@@ -4,24 +4,26 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
+import axios from "axios";
 
-const Carousel = (props) => {
+const Carousel = () => {
   const [responsive, setResponsive] = React.useState(false);
+  const [obat, setObat] = React.useState([]);
 
-  const {
-    slide1,
-    slide2,
-    slide3,
-    slide4,
-    slide5,
-    slide6,
-    content1,
-    content2,
-    content3,
-    content4,
-    content5,
-    content6,
-  } = props;
+  const getData = () => {
+    axios
+      .get("http://localhost:5000/obats")
+      .then((res) => {
+        console.info(res.data);
+        setObat(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+  React.useEffect(() => {
+    getData();
+  }, []);
 
   React.useEffect(() => {
     const handleResize = () => {
@@ -47,54 +49,17 @@ const Carousel = (props) => {
         onSwiper={(swiper) => console.log(swiper)}
         className="px-4 pb-5 xl:px-0"
       >
-        <SwiperSlide
-          className="flex flex-col items-center justify-center py-10 text-white bg-no-repeat bg-cover rounded-2xl"
-          style={{ backgroundImage: "url('./cardBg.png')" }}
-        >
-          <img src="./obat.png" alt="obat" />
-          {slide1}
-          <p className="text-white">{content1}</p>
-        </SwiperSlide>
-        <SwiperSlide
-          className="flex flex-col items-center justify-center py-10 text-white bg-no-repeat bg-cover rounded-2xl"
-          style={{ backgroundImage: "url('./cardBg.png')" }}
-        >
-          <img src="./obat.png" alt="obat" />
-          {slide2}
-          <p className="text-white">{content2}</p>
-        </SwiperSlide>
-        <SwiperSlide
-          className="flex flex-col items-center justify-center py-10 text-white bg-no-repeat bg-cover rounded-2xl"
-          style={{ backgroundImage: "url('./cardBg.png')" }}
-        >
-          <img src="./obat.png" alt="obat" />
-          {slide3}
-          <p className="text-white">{content3}</p>
-        </SwiperSlide>
-        <SwiperSlide
-          className="flex flex-col items-center justify-center py-10 text-white bg-no-repeat bg-cover rounded-2xl"
-          style={{ backgroundImage: "url('./cardBg.png')" }}
-        >
-          <img src="./obat.png" alt="obat" />
-          {slide4}
-          <p className="text-white">{content4}</p>
-        </SwiperSlide>
-        <SwiperSlide
-          className="flex flex-col items-center justify-center py-10 text-white bg-no-repeat bg-cover border rounded-2xl"
-          style={{ backgroundImage: "url('./cardBg.png')" }}
-        >
-          <img src="./obat.png" alt="obat" />
-          {slide5}
-          <p className="text-white">{content5}</p>
-        </SwiperSlide>
-        <SwiperSlide
-          className="flex flex-col items-center justify-center py-10 text-white bg-no-repeat bg-cover rounded-2xl "
-          style={{ backgroundImage: "url('./cardBg.png')" }}
-        >
-          <img src="./obat.png" alt="obat" />
-          {slide6}
-          <p className="text-white">{content6}</p>
-        </SwiperSlide>
+        {obat.map((item) => {
+          return (
+            <SwiperSlide
+              className="flex flex-col items-center justify-center gap-4 py-10 text-white bg-no-repeat bg-cover rounded-2xl"
+              style={{ backgroundImage: "url('./cardBg.png')" }}
+            >
+              <img src={item.gambar} alt={item.name} className="h-48" />
+              <p className="text-lg text-white">{item.name}</p>
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
     </div>
   );
