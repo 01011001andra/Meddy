@@ -12,7 +12,7 @@ const UserDetailBerita = () => {
 
   React.useEffect(() => {
     axios
-      .get(`http://localhost:5000/beritas/${id}`)
+      .get(`http://vijayasena.marsanix.com/api/beritas/${id}`)
       .then((res) => {
         setNews(res.data);
         console.info(res.data);

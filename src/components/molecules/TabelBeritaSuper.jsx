@@ -64,7 +64,7 @@ export default function TabelBeritaSuper() {
 
   const getData = () => {
     axios
-      .get("http://localhost:5000/berita")
+      .get("http://vijayasena.marsanix.com/api/berita")
       .then((res) => {
         console.info(res.data);
         setBerita(res.data);
@@ -89,7 +89,7 @@ export default function TabelBeritaSuper() {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:5000/berita/${item.uuid}`)
+          .delete(`http://vijayasena.marsanix.com/api/berita/${item.uuid}`)
           .then((res) => {
             console.info(res.data);
             getData();

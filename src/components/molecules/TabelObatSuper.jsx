@@ -99,7 +99,7 @@ export default function TabelObatSuper() {
 
   const getData = () => {
     axios
-      .get("http://localhost:5000/obat")
+      .get("http://vijayasena.marsanix.com/api/obat")
       .then((res) => {
         console.info(res.data);
         setObat(res.data);
@@ -124,7 +124,7 @@ export default function TabelObatSuper() {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:5000/obat/${item.uuid}`)
+          .delete(`http://vijayasena.marsanix.com/api/obat/${item.uuid}`)
           .then((res) => {
             console.info(res.data);
             getData();

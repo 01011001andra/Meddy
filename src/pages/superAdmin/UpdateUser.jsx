@@ -12,7 +12,7 @@ const UpdateUser = () => {
 
   const getData = () => {
     axios
-      .get(`http://localhost:5000/users/${id}`)
+      .get(`http://vijayasena.marsanix.com/api/users/${id}`)
       .then((res) => {
         console.info(res.data);
         // Mengisi nilai default input field menggunakan setValue
@@ -33,7 +33,7 @@ const UpdateUser = () => {
 
   const onSubmit = (data) => {
     axios
-      .patch(`http://localhost:5000/users/${id}`, {
+      .patch(`http://vijayasena.marsanix.com/api/users/${id}`, {
         id: data.id,
         name: data.name,
         email: data.email,

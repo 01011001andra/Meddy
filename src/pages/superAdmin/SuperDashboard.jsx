@@ -15,7 +15,7 @@ const SuperDashboard = () => {
 
   React.useEffect(() => {
     axios
-      .get("http://localhost:5000/obat")
+      .get("http://vijayasena.marsanix.com/api/obat")
       .then((res) => {
         console.info(res);
       })

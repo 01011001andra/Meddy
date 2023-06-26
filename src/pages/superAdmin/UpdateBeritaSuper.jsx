@@ -12,7 +12,7 @@ const UpdateBeritaSuper = () => {
 
   const getData = () => {
     axios
-      .get(`http://localhost:5000/berita/${id}`)
+      .get(`http://vijayasena.marsanix.com/api/berita/${id}`)
       .then((res) => {
         console.info(res.data);
         // Mengisi nilai default input field menggunakan setValue
@@ -31,7 +31,7 @@ const UpdateBeritaSuper = () => {
   const onSubmit = (data) => {
     console.log(data);
     axios
-      .patch(`http://localhost:5000/berita/${id}`, data)
+      .patch(`http://vijayasena.marsanix.com/api/berita/${id}`, data)
       .then((res) => {
         console.info(res);
         Swal.fire({

@@ -21,7 +21,7 @@ const TambahObatSuper = () => {
     formData.append("deskripsi", data.deskripsi);
 
     axios
-      .post("http://localhost:5000/obat", formData, {
+      .post("http://vijayasena.marsanix.com/api/obat", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

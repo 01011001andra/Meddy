@@ -11,7 +11,7 @@ const UserBerita = () => {
 
   React.useEffect(() => {
     axios
-      .get("http://localhost:5000/beritas")
+      .get("http://vijayasena.marsanix.com/api/beritas")
       .then((res) => {
         setNews(res.data);
         console.info(res.data);

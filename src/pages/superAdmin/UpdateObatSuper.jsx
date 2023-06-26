@@ -12,7 +12,7 @@ const UpdateObatSuper = () => {
 
   const getData = () => {
     axios
-      .get(`http://localhost:5000/obat/${id}`)
+      .get(`http://vijayasena.marsanix.com/api/obat/${id}`)
       .then((res) => {
         console.info(res.data);
         // Mengisi nilai default input field menggunakan setValue
@@ -34,7 +34,7 @@ const UpdateObatSuper = () => {
 
   const onSubmit = (data) => {
     axios
-      .patch(`http://localhost:5000/obat/${id}`, data)
+      .patch(`http://vijayasena.marsanix.com/api/obat/${id}`, data)
       .then((res) => {
         console.info(res);
         Swal.fire({

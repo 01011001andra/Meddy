@@ -15,10 +15,13 @@ export const LoginUser = createAsyncThunk(
   "user/LoginUser",
   async (user, thunkAPI) => {
     try {
-      const response = await axios.post("http://localhost:5000/login", {
-        email: user.email,
-        password: user.password,
-      });
+      const response = await axios.post(
+        "http://vijayasena.marsanix.com/api/login",
+        {
+          email: user.email,
+          password: user.password,
+        }
+      );
       console.info(response.data);
 
       return response.data;
@@ -39,7 +42,7 @@ export const LoginUser = createAsyncThunk(
 
 export const getMe = createAsyncThunk("user/getMe", async (_, thunkAPI) => {
   try {
-    const response = await axios.get("http://localhost:5000/me");
+    const response = await axios.get("http://vijayasena.marsanix.com/api/me");
     console.info(response.data);
 
     return response.data;
@@ -53,7 +56,7 @@ export const getMe = createAsyncThunk("user/getMe", async (_, thunkAPI) => {
 });
 
 export const LogOut = createAsyncThunk("user/LogOut", async () => {
-  await axios.delete("http://localhost:5000/logout");
+  await axios.delete("http://vijayasena.marsanix.com/api/logout");
 });
 
 // Membuat slice Redux untuk manajemen autentikasi login

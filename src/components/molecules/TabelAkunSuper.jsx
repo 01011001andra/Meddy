@@ -66,7 +66,7 @@ export default function TableAkunSuper() {
 
   const getData = () => {
     axios
-      .get("http://localhost:5000/users")
+      .get("http://vijayasena.marsanix.com/api/users")
       .then((res) => {
         console.info(res.data);
         setUsers(res.data);
@@ -91,7 +91,7 @@ export default function TableAkunSuper() {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:5000/users/${item.uuid}`)
+          .delete(`http://vijayasena.marsanix.com/api/users/${item.uuid}`)
           .then((res) => {
             console.info(res.data);
             getData();

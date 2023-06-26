@@ -9,7 +9,7 @@ const UserObat = () => {
 
   React.useEffect(() => {
     axios
-      .get("http://localhost:5000/obats")
+      .get("http://vijayasena.marsanix.com/api/obats")
       .then((res) => {
         setObat(res.data);
         console.info(res.data);

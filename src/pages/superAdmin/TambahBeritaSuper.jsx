@@ -17,7 +17,7 @@ const TambahBeritaSuper = () => {
     formData.append("title", data.title);
 
     axios
-      .post("http://localhost:5000/berita", formData, {
+      .post("http://vijayasena.marsanix.com/api/berita", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

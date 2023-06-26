@@ -12,7 +12,7 @@ const Carousel = () => {
 
   const getData = () => {
     axios
-      .get("http://localhost:5000/obats")
+      .get("http://vijayasena.marsanix.com/api/obats")
       .then((res) => {
         console.info(res.data);
         setObat(res.data);

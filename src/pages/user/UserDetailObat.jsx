@@ -14,7 +14,7 @@ const UserDetailObat = () => {
 
   React.useEffect(() => {
     axios
-      .get(`http://localhost:5000/obats/${id}`)
+      .get(`http://vijayasena.marsanix.com/api/obats/${id}`)
       .then((res) => {
         setObat(res.data);
         console.info(res.data);
@@ -26,7 +26,7 @@ const UserDetailObat = () => {
 
   React.useEffect(() => {
     axios
-      .get("http://localhost:5000/obats")
+      .get("http://vijayasena.marsanix.com/api/obats")
       .then((res) => {
         setObats(res.data);
         console.info(res.data);

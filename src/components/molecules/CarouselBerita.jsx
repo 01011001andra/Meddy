@@ -8,7 +8,7 @@ const CarouselBerita = () => {
 
   const getData = () => {
     axios
-      .get("http://localhost:5000/beritas")
+      .get("http://vijayasena.marsanix.com/api/beritas")
       .then((res) => {
         console.info(res.data);
         setBerita(res.data);
